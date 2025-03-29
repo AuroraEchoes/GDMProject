@@ -3,13 +3,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class PostProcessEffect : MonoBehaviour
 {
-    public Material postProcessMaterial;
+    public Material effectMaterial;
 
-    private void OnRenderImage(RenderTexture source, RenderTexture destination)
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (postProcessMaterial != null)
+        if (effectMaterial != null)
         {
-            Graphics.Blit(source, destination, postProcessMaterial);
+            Graphics.Blit(source, destination, effectMaterial);
         }
         else
         {
