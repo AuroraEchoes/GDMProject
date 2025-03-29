@@ -131,7 +131,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PixelSize: 53.9
-    - _Pixel_Size: 8
+    - _Pixel_Size: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

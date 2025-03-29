@@ -403,8 +403,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 693754120}
   - {fileID: 1396345599}
+  - {fileID: 693754120}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 21.617, y: 204.62, z: 0}
 --- !u!114 &85512067
@@ -1391,6 +1391,7 @@ GameObject:
   - component: {fileID: 693754120}
   - component: {fileID: 693754122}
   - component: {fileID: 693754121}
+  - component: {fileID: 693754123}
   m_Layer: 6
   m_Name: PixelEffectQuad
   m_TagString: Untagged
@@ -1466,6 +1467,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693754119}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &693754123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693754119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6905459f50c044379c08c8ce9b711fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &784850609
 PrefabInstance:
   m_ObjectHideFlags: 0
