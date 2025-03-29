@@ -4,33 +4,18 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     [SerializeField] private List<ToggleableEntity> toggleOnPress = new List<ToggleableEntity>();
-    private BoxCollider pressTrigger;
-
-    void Start()
-    {
-        pressTrigger = GetComponent<BoxCollider>();
-    }
-
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider other)
     {
-        // TODO: Maybe use tags instead
-        if (other.gameObject.GetComponent<ControllableCharacter>())
-            ToggleChildren();
+        TriggerCollide(other);
     }
 
     void OnTriggerExit(Collider other)
     {
-        // TODO: Maybe use tags instead
-        if (other.gameObject.GetComponent<ControllableCharacter>())
-            ToggleChildren();
+        TriggerCollide(other);
     }
 
-    private void ToggleChildren()
+    private void TriggerCollide(Collider other)
     {
         foreach (ToggleableEntity entity in toggleOnPress)
             entity.Toggle();
