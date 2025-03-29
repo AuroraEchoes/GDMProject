@@ -4,7 +4,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private List<ControllableCharacter> controllingCharacters = new List<ControllableCharacter>();
-    [SerializeField] private float jumpHoldBufferTime = 0.75f;
+    [SerializeField] private float jumpMaxHoldTime = 0.75f;
     [SerializeField] private float jumpMinHoldTime = 0.2f;
     [SerializeField] private float jumpMinHeightPercentage = 0.4f;
     private float jumpDownTime;
@@ -30,13 +30,14 @@ public class MovementController : MonoBehaviour
             chargingJump = true;
         }
         float timeSinceJumpDown = Time.time - jumpDownTime;
-        bool jumpBufferFull = timeSinceJumpDown >= jumpHoldBufferTime && Input.GetKey(KeyCode.Space);
+        bool jumpBufferFull = timeSinceJumpDown >= jumpMaxHoldTime && Input.GetKey(KeyCode.Space);
         bool shouldJump = (!Input.GetKey(KeyCode.Space) && timeSinceJumpDown >= jumpMinHoldTime) || jumpBufferFull;
         if (chargingJump && shouldJump)
         {
+            float jumpHeight = 1 + ((1.0f - jumpMinHeightPercentage) / (jumpMaxHoldTime - jumpMinHoldTime)) * (timeSinceJumpDown - jumpMaxHoldTime);
             chargingJump = false;
             foreach (ControllableCharacter character in controllingCharacters)
-                character.Jump(Mathf.Max(jumpMinHeightPercentage, timeSinceJumpDown / jumpHoldBufferTime));
+                character.Jump(jumpHeight);
         }
     }
 }
