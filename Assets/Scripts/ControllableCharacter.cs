@@ -55,6 +55,15 @@ public class ControllableCharacter : MonoBehaviour
         charCtrl.Move(movement * Time.fixedDeltaTime);
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rb = hit.collider.attachedRigidbody;
+        if (rb is null || rb.isKinematic)
+            return;
+        // Move smoothly, instead of rotating
+        rb.MovePosition(rb.transform.position + (hit.moveDirection.normalized * Time.fixedDeltaTime));
+    }
+
     private Vector3 JumpVelocity(float completion)
         => moveDir.ToVector3XZ() * TweenJump(completion, parameters.jumpBaseForwardVelocity)
         + Vector3.up * TweenJump(completion, parameters.jumpBaseUpwardVelocity);
