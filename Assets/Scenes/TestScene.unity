@@ -166,9 +166,9 @@ MonoBehaviour:
   controllingCharacters:
   - {fileID: 1533838615}
   - {fileID: 999109329}
-  jumpHoldBufferTime: 0.75
+  jumpMaxHoldTime: 0.4
   jumpMinHoldTime: 0.2
-  jumpMinHeightPercentage: 0.4
+  jumpMinHeightPercentage: 0.8
 --- !u!1 &141255674
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +500,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2557176269799122679, guid: ac500a5b757499a4c91f7f1a99c32637, type: 3}
+      propertyPath: parameters
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
+    - target: {fileID: 2557176269799122679, guid: ac500a5b757499a4c91f7f1a99c32637, type: 3}
       propertyPath: jumpBaseUpwardVelocity
       value: 2
       objectReference: {fileID: 0}
@@ -583,6 +587,10 @@ PrefabInstance:
       propertyPath: jumpTime
       value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2557176269799122679, guid: ac500a5b757499a4c91f7f1a99c32637, type: 3}
+      propertyPath: parameters
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
     - target: {fileID: 2557176269799122679, guid: ac500a5b757499a4c91f7f1a99c32637, type: 3}
       propertyPath: maxVelocity
       value: 3
