@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b8e46d8a5d6cf488fd2f75d354a557, type: 3}
   m_Name: CatEntityParams
   m_EditorClassIdentifier: 
-  maxVelocity: 4
-  acceleration: 16
-  deceleration: 30
-  jumpBaseForwardVelocity: 3
-  jumpBaseUpwardVelocity: 25
-  jumpTime: 2
+  MaxVelocity: 2
+  Acceleration: 10
+  Deceleration: 15
+  JumpForwardVelocity: 5
+  JumpUpwardVelocity: 15
+  JumpBaseLength: 1
+  JumpHoldWindowLength: 0.3
   gravityStrength: 9.81
