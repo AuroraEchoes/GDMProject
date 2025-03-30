@@ -61,6 +61,10 @@ public class ControllableCharacter : MonoBehaviour
             float jumpCompletion = (Time.time - jumpHoldWindowEndTime) / parameters.JumpBaseLength;
             jumping = jumpCompletion <= 1.0f;
         }
+        // Rotate cat to look in moving direction (VERY CRUDE)
+        if (!moveDir.Equals(Vector2.zero))
+            transform.rotation = Quaternion.LookRotation(moveDir.Rotate(-90).ToVector3XZ());
+        // transform.Rotate(0.0f, 0.0f, Vector2.Angle(Vector2.zero, moveDir));
     }
 
     void FixedUpdate()

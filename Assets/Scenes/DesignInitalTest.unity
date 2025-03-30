@@ -3701,9 +3701,6 @@ MonoBehaviour:
   controllingCharacters:
   - {fileID: 1216974019}
   - {fileID: 618210177}
-  jumpMaxHoldTime: 0.75
-  jumpMinHoldTime: 0.2
-  jumpMinHeightPercentage: 0.4
 --- !u!4 &1902127760
 Transform:
   m_ObjectHideFlags: 0
