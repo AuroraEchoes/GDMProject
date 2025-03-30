@@ -1,8 +1,5 @@
 using System;
-using System.Runtime.CompilerServices;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class ControllableCharacter : MonoBehaviour
 {
@@ -10,9 +7,11 @@ public class ControllableCharacter : MonoBehaviour
     private Vector2 moveDir;
     private bool accelerating = false;
     private float velocity;
-    private bool jumping => jumpStartTime != 0.0f && Time.time <= jumpStartTime + parameters.jumpTime;
+    private bool jumping;
+    private bool jumpHoldWindowActive;
     private float jumpStartTime;
-    private float jumpHeight;
+    private float jumpHoldWindowEndTime;
+
     private CharacterController charCtrl;
 
     public void SetInputAxes(Vector2 input)
@@ -22,13 +21,23 @@ public class ControllableCharacter : MonoBehaviour
             moveDir = input.normalized;
     }
 
-    // @param amount: Decimal percentage of maximum height
-    public void Jump(float height)
+    public void JumpWindowStart()
     {
-        if (charCtrl.isGrounded)
+        bool canJump = !jumping && charCtrl.isGrounded;
+        if (canJump)
         {
+            jumpHoldWindowActive = true;
+            jumping = true;
             jumpStartTime = Time.time;
-            jumpHeight = height;
+        }
+    }
+
+    public void JumpWindowEnd()
+    {
+        if (jumping && jumpHoldWindowActive)
+        {
+            jumpHoldWindowActive = false;
+            jumpHoldWindowEndTime = Time.time;
         }
     }
 
@@ -37,19 +46,36 @@ public class ControllableCharacter : MonoBehaviour
         charCtrl = GetComponent<CharacterController>();
     }
 
+    void Update()
+    {
+        // End hold window phase of jump
+        if (jumpHoldWindowActive)
+        {
+            float windowExpiry = jumpStartTime + parameters.JumpHoldWindowLength;
+            if (Time.time > windowExpiry)
+                JumpWindowEnd();
+        }
+        // End jump
+        if (jumping && !jumpHoldWindowActive)
+        {
+            float jumpCompletion = (Time.time - jumpHoldWindowEndTime) / parameters.JumpBaseLength;
+            jumping = jumpCompletion <= 1.0f;
+        }
+    }
+
     void FixedUpdate()
     {
         Vector3 movement = Vector3.zero;
         Vector3 gravity = Vector3.down * parameters.gravityStrength;
-        float velocityDelta = (accelerating ? parameters.acceleration : -parameters.deceleration) * Time.fixedDeltaTime;
-        velocity = Mathf.Clamp(velocity + velocityDelta, 0, parameters.maxVelocity);
+        float velocityDelta = (accelerating ? parameters.Acceleration : -parameters.Deceleration) * Time.fixedDeltaTime;
+        velocity = Mathf.Clamp(velocity + velocityDelta, 0, parameters.MaxVelocity);
         Vector3 walk = moveDir.ToVector3XZ() * velocity;
         movement += gravity;
         movement += walk;
         if (jumping)
         {
-            float completion = (Time.time - jumpStartTime) / parameters.jumpTime;
-            Vector3 jump = JumpVelocity(completion) * jumpHeight;
+            float jumpCompletion = (Time.time - jumpHoldWindowEndTime) / parameters.JumpBaseLength;
+            Vector3 jump = JumpVelocity(jumpHoldWindowActive ? 0.0f : jumpCompletion);
             movement += jump;
         }
         charCtrl.Move(movement * Time.fixedDeltaTime);
@@ -65,8 +91,8 @@ public class ControllableCharacter : MonoBehaviour
     }
 
     private Vector3 JumpVelocity(float completion)
-        => moveDir.ToVector3XZ() * TweenJump(completion, parameters.jumpBaseForwardVelocity)
-        + Vector3.up * TweenJump(completion, parameters.jumpBaseUpwardVelocity);
+        => moveDir.ToVector3XZ() * TweenJump(completion, parameters.JumpForwardVelocity)
+        + Vector3.up * TweenJump(completion, parameters.JumpUpwardVelocity);
     
     private float TweenJump(float completion, float maxValue) => maxValue * Mathf.Pow(1.0f - completion, 5.0f);
 }
