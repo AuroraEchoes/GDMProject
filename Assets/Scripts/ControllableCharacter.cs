@@ -14,6 +14,8 @@ public class ControllableCharacter : MonoBehaviour
 
     private CharacterController charCtrl;
 
+
+    
     public void SetInputAxes(Vector2 input)
     {
         accelerating = !input.Equals(Vector2.zero);
@@ -48,6 +50,7 @@ public class ControllableCharacter : MonoBehaviour
 
     void Update()
     {
+
         // End hold window phase of jump
         if (jumpHoldWindowActive)
         {

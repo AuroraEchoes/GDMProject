@@ -1,12 +1,28 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private List<ControllableCharacter> controllingCharacters = new List<ControllableCharacter>();
+    private bool blockedinlight = false;
+    public void setBlockLight(bool blocked)
+    {
+        blockedinlight = blocked;
+        Debug.Log($"{gameObject.name} blockedInLight set to {blocked}");
+    }
 
     void Update()
     {
+        if (blockedinlight )
+        {
+            return;
+        }
+      
+       
+
+
+
         Vector2 inputMovement = Vector2.zero;
         if (Input.GetKey(KeyCode.W))
             inputMovement.y += 1;
@@ -25,5 +41,12 @@ public class MovementController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
             foreach (ControllableCharacter character in controllingCharacters)
                 character.JumpWindowEnd();
+
+        
+
+
+
     }
+
+    
 }
