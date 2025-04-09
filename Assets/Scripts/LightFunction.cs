@@ -4,6 +4,7 @@ using UnityEngine.Timeline;
 public class LightFunction : MonoBehaviour
 {
     [SerializeField] private MovementController Controller;
+    [SerializeField] private ControllableCharacter Character;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class LightFunction : MonoBehaviour
            
 
                 Controller.setBlockLight(true);
+            Character.SetBlockedInLight(true);
 
 
             
@@ -26,10 +28,11 @@ public class LightFunction : MonoBehaviour
         if (other.CompareTag("Shadow"))
      
         {
+            Debug.Log("Shadow exited light zone");
 
 
-
-           Controller.setBlockLight(false);
+            Controller.setBlockLight(false);
+            Character.SetBlockedInLight(false);
         }
     }
 }

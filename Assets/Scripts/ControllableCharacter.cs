@@ -13,9 +13,22 @@ public class ControllableCharacter : MonoBehaviour
     private float jumpHoldWindowEndTime;
 
     private CharacterController charCtrl;
+    private bool blockedinLight = false;
+
+    public void SetBlockedInLight(bool blocked)
+    {
+        blockedinLight = blocked;
+
+        if (blocked)
+        {
+            velocity = 0f;
+           accelerating = false;
+           moveDir = Vector2.zero;
+      }
+       
+    }
 
 
-    
     public void SetInputAxes(Vector2 input)
     {
         accelerating = !input.Equals(Vector2.zero);
@@ -72,6 +85,12 @@ public class ControllableCharacter : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (blockedinLight)
+        {
+           return;
+       }
+       
+
         Vector3 movement = Vector3.zero;
         Vector3 gravity = Vector3.down * parameters.gravityStrength;
         float velocityDelta = (accelerating ? parameters.Acceleration : -parameters.Deceleration) * Time.fixedDeltaTime;

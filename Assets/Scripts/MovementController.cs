@@ -5,21 +5,33 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private List<ControllableCharacter> controllingCharacters = new List<ControllableCharacter>();
-    private bool blockedinlight = false;
+    private bool blockedinLight = false;
     public void setBlockLight(bool blocked)
     {
-        blockedinlight = blocked;
-        Debug.Log($"{gameObject.name} blockedInLight set to {blocked}");
-    }
+        blockedinLight = blocked;
+      
+        
+        
+        foreach (var character in controllingCharacters)
+        {
+            if (character.CompareTag("Shadow"))
+            {
+                character.SetBlockedInLight(blocked);
+            }
+        }
 
+        
+
+
+    }
     void Update()
     {
-        if (blockedinlight )
+
+
+        if (blockedinLight && CompareTag("Shadow"))
         {
             return;
         }
-      
-       
 
 
 
@@ -42,11 +54,9 @@ public class MovementController : MonoBehaviour
             foreach (ControllableCharacter character in controllingCharacters)
                 character.JumpWindowEnd();
 
-        
+
 
 
 
     }
-
-    
 }
