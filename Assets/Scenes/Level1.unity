@@ -436,7 +436,7 @@ Transform:
   m_GameObject: {fileID: 85512063}
   serializedVersion: 2
   m_LocalRotation: {x: -0.27932882, y: -0.27861327, z: 0.08140947, w: -0.9152719}
-  m_LocalPosition: {x: 20.62, y: 10.238, z: -9.658236}
+  m_LocalPosition: {x: -5, y: 10.238, z: -9.658236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -504,7 +504,7 @@ MonoBehaviour:
   entity2: {fileID: 795824851}
   padding: 0.5
   smoothTime: 0.3
-  minXPosition: -3
+  minXPosition: -5
   maxXPosition: 20
 --- !u!1001 &113401665
 PrefabInstance:
