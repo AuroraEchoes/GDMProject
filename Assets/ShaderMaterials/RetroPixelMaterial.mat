@@ -113,7 +113,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _ColorDepth: 2.5
-    - _Colour_Depth: 50
+    - _Colour_Depth: 8
     - _Contrast: 1.138
     - _Cull: 2
     - _Cutoff: 0.5
@@ -131,7 +131,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PixelSize: 53.9
-    - _Pixel_Size: 0.002
+    - _Pixel_Size: 0.003
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
