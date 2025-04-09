@@ -5,33 +5,17 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private List<ControllableCharacter> controllingCharacters = new List<ControllableCharacter>();
-    private bool blockedinLight = false;
-    public void setBlockLight(bool blocked)
-    {
-        blockedinLight = blocked;
-      
-        
-        
-        foreach (var character in controllingCharacters)
-        {
-            if (character.CompareTag("Shadow"))
-            {
-                character.SetBlockedInLight(blocked);
-            }
-        }
+    
 
         
 
 
-    }
+    
     void Update()
     {
 
 
-        if (blockedinLight && CompareTag("Shadow"))
-        {
-            return;
-        }
+       
 
 
 

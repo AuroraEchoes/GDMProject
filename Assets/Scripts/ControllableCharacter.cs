@@ -15,18 +15,7 @@ public class ControllableCharacter : MonoBehaviour
     private CharacterController charCtrl;
     private bool blockedinLight = false;
 
-    public void SetBlockedInLight(bool blocked)
-    {
-        blockedinLight = blocked;
-
-        if (blocked)
-        {
-            velocity = 0f;
-           accelerating = false;
-           moveDir = Vector2.zero;
-      }
-       
-    }
+ 
 
 
     public void SetInputAxes(Vector2 input)
@@ -85,10 +74,7 @@ public class ControllableCharacter : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (blockedinLight)
-        {
-           return;
-       }
+        
        
 
         Vector3 movement = Vector3.zero;
