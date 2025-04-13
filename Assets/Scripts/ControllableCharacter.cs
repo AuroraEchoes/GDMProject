@@ -1,10 +1,11 @@
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Scripting.APIUpdating;
 
 public class ControllableCharacter : MonoBehaviour
 {
-    public MovementController Controller;
+    private MovementController ctrl;
     private Rigidbody rb;
     private Vector2 moveDir;
     private Vector2 nonZeroMoveDir;
@@ -12,11 +13,11 @@ public class ControllableCharacter : MonoBehaviour
     private bool accelerating = false;
     private float velocity;
     private float rotationCompletion = 0.0f;
-    private float rotationTime => 1.0f / Controller.MovementParams.RotationSpeed;
+    private float rotationTime => 1.0f / ctrl.MovementParams.RotationSpeed;
 
     public void SetInputAxes(Vector2 input)
     {
-        Vector2 rotatedInput = input.Rotate(Controller.ForwardDirection.Angle()).normalized;
+        Vector2 rotatedInput = input.Rotate(ctrl.ForwardDirection.Angle()).normalized;
         accelerating = !rotatedInput.Equals(Vector2.zero);
         if (accelerating && !moveDir.Equals(rotatedInput))
             // Move dir has changed; we should rotate
@@ -28,6 +29,8 @@ public class ControllableCharacter : MonoBehaviour
             }
             moveDir = rotatedInput;
     }
+
+    public void SetController(MovementController ctrl) { this.ctrl = ctrl; }
 
     void Start()
     {
@@ -46,14 +49,15 @@ public class ControllableCharacter : MonoBehaviour
             float thisRotation = Mathf.Lerp(0, totalRotation, rotationCompletion);
             rotationVec = prevNonZeroMoveDir.Rotate(thisRotation);
         }
-        rb.MoveRotation(Quaternion.LookRotation(rotationVec.Rotate(-90).ToVector3XZ()));
+        if (!rotationVec.Equals(Vector2.zero))
+            rb.MoveRotation(Quaternion.LookRotation(rotationVec.Rotate(-90).ToVector3XZ()));
     }
 
     void FixedUpdate()
     {
         Vector3 movement = Vector3.zero;
-        float velocityDelta = (accelerating ? Controller.Acceleration : -Controller.Deceleration) * Time.fixedDeltaTime;
-        velocity = Mathf.Clamp(velocity + velocityDelta, 0, Controller.MaxVelocity);
+        float velocityDelta = (accelerating ? ctrl.Acceleration : -ctrl.Deceleration) * Time.fixedDeltaTime;
+        velocity = Mathf.Clamp(velocity + velocityDelta, 0, ctrl.MaxVelocity);
         Vector3 walk = moveDir.ToVector3XZ() * velocity;
         movement += walk;
         rb.MovePosition(transform.position + (movement * Time.fixedDeltaTime));

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2053261602586511267}
   - component: {fileID: 3459171262974264171}
   m_Layer: 0
-  m_Name: Cat
+  m_Name: CatBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5d6a5b285df25848de2d17d1f44c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
+  Controller: {fileID: 0}
 --- !u!54 &3459171262974264171
 Rigidbody:
   m_ObjectHideFlags: 0

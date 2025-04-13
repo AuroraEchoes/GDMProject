@@ -16,7 +16,7 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         foreach (ControllableCharacter character in controllingCharacters)
-            character.Controller = this;
+            character.SetController(this);
     }
 
 
