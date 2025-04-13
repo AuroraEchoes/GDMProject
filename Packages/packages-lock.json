@@ -194,11 +194,7 @@
       }
     },
     "com.unity.visualscripting": {
-<<<<<<< Updated upstream
       "version": "1.9.6",
-=======
-      "version": "1.9.5",
->>>>>>> Stashed changes
       "depth": 0,
       "source": "registry",
       "dependencies": {
