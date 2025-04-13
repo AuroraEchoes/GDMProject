@@ -13,7 +13,7 @@ public class ControllableCharacter : MonoBehaviour
     private float jumpHoldWindowEndTime;
 
     private CharacterController charCtrl;
-    private bool blockedinLight = false;
+    
 
  
 
