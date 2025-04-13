@@ -56,7 +56,8 @@ public class ControllableCharacter : MonoBehaviour
             rb.position += climbWall;
 
         // Prevent sliding around
-        rb.linearVelocity = Vector3.Min(rb.linearVelocity, movement);
+        if (velocity.Equals(0f) && !rb.linearVelocity.Equals(Vector3.zero))
+            rb.linearVelocity = Vector3.zero;
 
         // Rotation
         Vector2 rotationVec = nonZeroMoveDir;
