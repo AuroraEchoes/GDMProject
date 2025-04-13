@@ -5,6 +5,21 @@ public class MovementController : MonoBehaviour
 {
     [SerializeField] private List<ControllableCharacter> controllingCharacters = new List<ControllableCharacter>();
 
+    public ControllableEntityParams MovementParams;
+    public bool OverrideForwardDirection = false;
+    public Vector2 ForwardDirectionOverride = Vector2.zero;
+    public float MaxVelocity => MovementParams.MaxVelocity;
+    public float Acceleration => MovementParams.Acceleration;
+    public float Deceleration => MovementParams.Deceleration;
+    public Vector2 ForwardDirection => OverrideForwardDirection ? ForwardDirectionOverride : MovementParams.ForwardDirection;
+
+    void Start()
+    {
+        foreach (ControllableCharacter character in controllingCharacters)
+            character.Controller = this;
+    }
+
+
     void Update()
     {
         Vector2 inputMovement = Vector2.zero;

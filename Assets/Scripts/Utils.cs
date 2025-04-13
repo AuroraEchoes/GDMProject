@@ -17,6 +17,11 @@ public static class Utils
         );
     }
 
+    public static float Angle(this Vector2 vector)
+    {
+        return Vector2.Angle(Vector2.up, vector);
+    }
+
     public static float ToRadians(this float degrees)
     {
         return degrees * (Mathf.PI / 180.0f);

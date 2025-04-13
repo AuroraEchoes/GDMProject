@@ -3,23 +3,22 @@ using UnityEngine;
 
 public class ControllableCharacter : MonoBehaviour
 {
-    [SerializeField] private ControllableEntityParams parameters;
+    public MovementController Controller;
+    private Rigidbody rb;
     private Vector2 moveDir;
     private bool accelerating = false;
     private float velocity;
-
-    private CharacterController charCtrl;
 
     public void SetInputAxes(Vector2 input)
     {
         accelerating = !input.Equals(Vector2.zero);
         if (accelerating)
-            moveDir = input.normalized;
+            moveDir = input.Rotate(Controller.ForwardDirection.Angle()).normalized;
     }
 
     void Start()
     {
-        charCtrl = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -32,21 +31,18 @@ public class ControllableCharacter : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movement = Vector3.zero;
-        Vector3 gravity = Vector3.down * parameters.gravityStrength;
-        float velocityDelta = (accelerating ? parameters.Acceleration : -parameters.Deceleration) * Time.fixedDeltaTime;
-        velocity = Mathf.Clamp(velocity + velocityDelta, 0, parameters.MaxVelocity);
+        float velocityDelta = (accelerating ? Controller.Acceleration : -Controller.Deceleration) * Time.fixedDeltaTime;
+        velocity = Mathf.Clamp(velocity + velocityDelta, 0, Controller.MaxVelocity);
         Vector3 walk = moveDir.ToVector3XZ() * velocity;
-        movement += gravity;
         movement += walk;
-        charCtrl.Move(movement * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + (movement * Time.fixedDeltaTime));
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Rigidbody rb = hit.collider.attachedRigidbody;
-        if (rb is null || rb.isKinematic)
-            return;
-        // Move smoothly, instead of rotating
-        rb.MovePosition(rb.transform.position + (hit.moveDirection.normalized * Time.fixedDeltaTime));
+        Rigidbody otherRb = hit.collider.attachedRigidbody;
+        if (otherRb is null || otherRb.isKinematic) return;
+        // Move smoothly, instead of rotating affected objects
+        otherRb.MovePosition(otherRb.transform.position + (hit.moveDirection.normalized * Time.fixedDeltaTime));
     }
 }
