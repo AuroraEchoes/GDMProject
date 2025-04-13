@@ -7,4 +7,5 @@ public class ControllableEntityParams : ScriptableObject
     public float MaxVelocity = 1.0f;
     public float Acceleration = 1.0f;
     public float Deceleration = 1.0f;
+    public float RotationSpeed = 1.0f;
 }
