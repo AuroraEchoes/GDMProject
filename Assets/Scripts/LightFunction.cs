@@ -3,14 +3,36 @@ using UnityEngine.Timeline;
 
 public class LightFunction : MonoBehaviour
 {
-   
+    [SerializeField] private MovementController Controller;
+    [SerializeField] private ControllableCharacter Character;
 
-    [SerializeField] private Light lightSource;
-    [SerializeField] private Collider blockerCollider;
-
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
-        blockerCollider.enabled = lightSource.enabled;
+        if(other.CompareTag("Shadow"))
+            {
+          
+            Debug.Log("Shadow entered light zone: disabling movement");
+           
+
+                Controller.setBlockLight(true);
+            Character.SetBlockedInLight(true);
+
+
+            
+        }
+       
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Shadow"))
+     
+        {
+            Debug.Log("Shadow exited light zone");
+
+
+            Controller.setBlockLight(false);
+            Character.SetBlockedInLight(false);
+        }
     }
 }
