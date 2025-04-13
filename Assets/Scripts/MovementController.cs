@@ -18,12 +18,5 @@ public class MovementController : MonoBehaviour
             inputMovement.x += 1;
         foreach (ControllableCharacter character in controllingCharacters)
             character.SetInputAxes(inputMovement);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            foreach (ControllableCharacter character in controllingCharacters)
-                character.JumpWindowStart();
-        if (Input.GetKeyUp(KeyCode.Space))
-            foreach (ControllableCharacter character in controllingCharacters)
-                character.JumpWindowEnd();
     }
 }

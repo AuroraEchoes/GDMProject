@@ -7,10 +7,6 @@ public class ControllableCharacter : MonoBehaviour
     private Vector2 moveDir;
     private bool accelerating = false;
     private float velocity;
-    private bool jumping;
-    private bool jumpHoldWindowActive;
-    private float jumpStartTime;
-    private float jumpHoldWindowEndTime;
 
     private CharacterController charCtrl;
 
@@ -21,26 +17,6 @@ public class ControllableCharacter : MonoBehaviour
             moveDir = input.normalized;
     }
 
-    public void JumpWindowStart()
-    {
-        bool canJump = !jumping && charCtrl.isGrounded;
-        if (canJump)
-        {
-            jumpHoldWindowActive = true;
-            jumping = true;
-            jumpStartTime = Time.time;
-        }
-    }
-
-    public void JumpWindowEnd()
-    {
-        if (jumping && jumpHoldWindowActive)
-        {
-            jumpHoldWindowActive = false;
-            jumpHoldWindowEndTime = Time.time;
-        }
-    }
-
     void Start()
     {
         charCtrl = GetComponent<CharacterController>();
@@ -48,23 +24,9 @@ public class ControllableCharacter : MonoBehaviour
 
     void Update()
     {
-        // End hold window phase of jump
-        if (jumpHoldWindowActive)
-        {
-            float windowExpiry = jumpStartTime + parameters.JumpHoldWindowLength;
-            if (Time.time > windowExpiry)
-                JumpWindowEnd();
-        }
-        // End jump
-        if (jumping && !jumpHoldWindowActive)
-        {
-            float jumpCompletion = (Time.time - jumpHoldWindowEndTime) / parameters.JumpBaseLength;
-            jumping = jumpCompletion <= 1.0f;
-        }
         // Rotate cat to look in moving direction (VERY CRUDE)
         if (!moveDir.Equals(Vector2.zero))
             transform.rotation = Quaternion.LookRotation(moveDir.Rotate(-90).ToVector3XZ());
-        // transform.Rotate(0.0f, 0.0f, Vector2.Angle(Vector2.zero, moveDir));
     }
 
     void FixedUpdate()
@@ -76,12 +38,6 @@ public class ControllableCharacter : MonoBehaviour
         Vector3 walk = moveDir.ToVector3XZ() * velocity;
         movement += gravity;
         movement += walk;
-        if (jumping)
-        {
-            float jumpCompletion = (Time.time - jumpHoldWindowEndTime) / parameters.JumpBaseLength;
-            Vector3 jump = JumpVelocity(jumpHoldWindowActive ? 0.0f : jumpCompletion);
-            movement += jump;
-        }
         charCtrl.Move(movement * Time.fixedDeltaTime);
     }
 
@@ -93,10 +49,4 @@ public class ControllableCharacter : MonoBehaviour
         // Move smoothly, instead of rotating
         rb.MovePosition(rb.transform.position + (hit.moveDirection.normalized * Time.fixedDeltaTime));
     }
-
-    private Vector3 JumpVelocity(float completion)
-        => moveDir.ToVector3XZ() * TweenJump(completion, parameters.JumpForwardVelocity)
-        + Vector3.up * TweenJump(completion, parameters.JumpUpwardVelocity);
-    
-    private float TweenJump(float completion, float maxValue) => maxValue * Mathf.Pow(1.0f - completion, 5.0f);
 }
