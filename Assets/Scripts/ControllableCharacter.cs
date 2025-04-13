@@ -1,7 +1,5 @@
-using UnityEditor.VersionControl;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Scripting.APIUpdating;
 
 public class ControllableCharacter : MonoBehaviour
 {
@@ -10,15 +8,16 @@ public class ControllableCharacter : MonoBehaviour
     private Vector2 moveDir;
     private Vector2 nonZeroMoveDir;
     private Vector2 prevNonZeroMoveDir;
-    private bool accelerating = false;
+    private bool accelerating;
     private float velocity;
     private float rotationCompletion = 0.0f;
     private float rotationTime => 1.0f / ctrl.MovementParams.RotationSpeed;
+    private float gravityDisabledTime;
 
     public void SetInputAxes(Vector2 input)
     {
         Vector2 rotatedInput = input.Rotate(ctrl.ForwardDirection.Angle()).normalized;
-        accelerating = !rotatedInput.Equals(Vector2.zero);
+        accelerating = !input.Equals(Vector2.zero);
         if (accelerating && !moveDir.Equals(rotatedInput))
             // Move dir has changed; we should rotate
             if (!rotatedInput.Equals(Vector2.zero))
@@ -39,11 +38,31 @@ public class ControllableCharacter : MonoBehaviour
 
     void Update()
     {
-        Vector2 rotationVec = nonZeroMoveDir;
+        
+    }
 
+    void FixedUpdate()
+    {
+        // Position
+        Vector3 movement = Vector3.zero;
+        float velocityDelta = (accelerating ? ctrl.Acceleration : -ctrl.Deceleration) * Time.fixedDeltaTime;
+        velocity = Mathf.Clamp(velocity + velocityDelta, 0, ctrl.MaxVelocity);
+        Vector3 walk = moveDir.ToVector3XZ() * velocity;
+        movement += walk;
+        Vector3 climbWall = ClimbWall(movement);
+        if (climbWall.Equals(Vector3.zero))
+            rb.MovePosition(transform.position + (movement * Time.fixedDeltaTime));
+        else
+            rb.position += climbWall;
+
+        // Prevent sliding around
+        rb.linearVelocity = Vector3.Min(rb.linearVelocity, movement);
+
+        // Rotation
+        Vector2 rotationVec = nonZeroMoveDir;
         if (rotationCompletion < 1.0f)
         {
-            float deltaCompletion = Time.deltaTime / rotationTime;
+            float deltaCompletion = Time.fixedDeltaTime / rotationTime;
             rotationCompletion += deltaCompletion;
             float totalRotation = Vector2.SignedAngle(prevNonZeroMoveDir, nonZeroMoveDir);
             float thisRotation = Mathf.Lerp(0, totalRotation, rotationCompletion);
@@ -53,21 +72,25 @@ public class ControllableCharacter : MonoBehaviour
             rb.MoveRotation(Quaternion.LookRotation(rotationVec.Rotate(-90).ToVector3XZ()));
     }
 
-    void FixedUpdate()
+    private Vector3 ClimbWall(Vector3 movement)
     {
-        Vector3 movement = Vector3.zero;
-        float velocityDelta = (accelerating ? ctrl.Acceleration : -ctrl.Deceleration) * Time.fixedDeltaTime;
-        velocity = Mathf.Clamp(velocity + velocityDelta, 0, ctrl.MaxVelocity);
-        Vector3 walk = moveDir.ToVector3XZ() * velocity;
-        movement += walk;
-        rb.MovePosition(transform.position + (movement * Time.fixedDeltaTime));
-    }
+        Vector3 moveDir = nonZeroMoveDir.ToVector3XZ();
+        Vector3 wallRayStartPos = transform.position + Vector3.up * 0.2f;
+        RaycastHit wallRangefinder;
+        bool rangefinderHit = Physics.Raycast(wallRayStartPos, moveDir, out wallRangefinder, 1.0f);
+        if (!rangefinderHit) return Vector3.zero;
+        if (wallRangefinder.rigidbody is null || !wallRangefinder.rigidbody.isKinematic) return Vector3.zero;
+        // Debug.Log($"Rangefinder: {wallRangefinder.distance} Target: {wallRangefinder.collider.gameObject.name} Position: {wallRangefinder.transform.position}");
+        float minClearDist = Mathf.Tan(ctrl.MovementParams.MaxSlopeAngle.ToRadians()) * ctrl.MovementParams.MaxClimbHeight;
+        Vector3 slopeRayStartPoint = wallRangefinder.point + Vector3.up * ctrl.MovementParams.MaxClimbHeight;
+        bool climbableSlope = !Physics.Raycast(slopeRayStartPoint, moveDir, minClearDist);
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Rigidbody otherRb = hit.collider.attachedRigidbody;
-        if (otherRb is null || otherRb.isKinematic) return;
-        // Move smoothly, instead of rotating affected objects
-        otherRb.MovePosition(otherRb.transform.position + (hit.moveDirection.normalized * Time.fixedDeltaTime));
+        Vector3 climbRayStartPos = wallRangefinder.point
+            + movement * Time.fixedDeltaTime 
+            + Vector3.up * ctrl.MovementParams.MaxClimbHeight;
+        RaycastHit climbRay;
+        bool climbRayHit = Physics.Raycast(climbRayStartPos, Vector3.down, out climbRay, ctrl.MovementParams.MaxClimbHeight);
+        if (!climbRayHit) return Vector3.zero;
+        return climbRay.point - wallRangefinder.point;
     }
 }
