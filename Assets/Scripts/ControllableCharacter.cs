@@ -1,102 +1,73 @@
-using System;
+using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Scripting.APIUpdating;
 
 public class ControllableCharacter : MonoBehaviour
 {
-    [SerializeField] private ControllableEntityParams parameters;
+    private MovementController ctrl;
+    private Rigidbody rb;
     private Vector2 moveDir;
+    private Vector2 nonZeroMoveDir;
+    private Vector2 prevNonZeroMoveDir;
     private bool accelerating = false;
     private float velocity;
-    private bool jumping;
-    private bool jumpHoldWindowActive;
-    private float jumpStartTime;
-    private float jumpHoldWindowEndTime;
-
-    private CharacterController charCtrl;
+    private float rotationCompletion = 0.0f;
+    private float rotationTime => 1.0f / ctrl.MovementParams.RotationSpeed;
 
     public void SetInputAxes(Vector2 input)
     {
-        accelerating = !input.Equals(Vector2.zero);
-        if (accelerating)
-            moveDir = input.normalized;
+        Vector2 rotatedInput = input.Rotate(ctrl.ForwardDirection.Angle()).normalized;
+        accelerating = !rotatedInput.Equals(Vector2.zero);
+        if (accelerating && !moveDir.Equals(rotatedInput))
+            // Move dir has changed; we should rotate
+            if (!rotatedInput.Equals(Vector2.zero))
+            {
+                prevNonZeroMoveDir = nonZeroMoveDir.Equals(rotatedInput) ? prevNonZeroMoveDir : nonZeroMoveDir;
+                nonZeroMoveDir = rotatedInput;
+                rotationCompletion = 0.0f;
+            }
+            moveDir = rotatedInput;
     }
 
-    public void JumpWindowStart()
-    {
-        bool canJump = !jumping && charCtrl.isGrounded;
-        if (canJump)
-        {
-            jumpHoldWindowActive = true;
-            jumping = true;
-            jumpStartTime = Time.time;
-        }
-    }
-
-    public void JumpWindowEnd()
-    {
-        if (jumping && jumpHoldWindowActive)
-        {
-            jumpHoldWindowActive = false;
-            jumpHoldWindowEndTime = Time.time;
-        }
-    }
+    public void SetController(MovementController ctrl) { this.ctrl = ctrl; }
 
     void Start()
     {
-        charCtrl = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        // End hold window phase of jump
-        if (jumpHoldWindowActive)
+        Vector2 rotationVec = nonZeroMoveDir;
+
+        if (rotationCompletion < 1.0f)
         {
-            float windowExpiry = jumpStartTime + parameters.JumpHoldWindowLength;
-            if (Time.time > windowExpiry)
-                JumpWindowEnd();
+            float deltaCompletion = Time.deltaTime / rotationTime;
+            rotationCompletion += deltaCompletion;
+            float totalRotation = Vector2.SignedAngle(prevNonZeroMoveDir, nonZeroMoveDir);
+            float thisRotation = Mathf.Lerp(0, totalRotation, rotationCompletion);
+            rotationVec = prevNonZeroMoveDir.Rotate(thisRotation);
         }
-        // End jump
-        if (jumping && !jumpHoldWindowActive)
-        {
-            float jumpCompletion = (Time.time - jumpHoldWindowEndTime) / parameters.JumpBaseLength;
-            jumping = jumpCompletion <= 1.0f;
-        }
-        // Rotate cat to look in moving direction (VERY CRUDE)
-        if (!moveDir.Equals(Vector2.zero))
-            transform.rotation = Quaternion.LookRotation(moveDir.Rotate(-90).ToVector3XZ());
-        // transform.Rotate(0.0f, 0.0f, Vector2.Angle(Vector2.zero, moveDir));
+        if (!rotationVec.Equals(Vector2.zero))
+            rb.MoveRotation(Quaternion.LookRotation(rotationVec.Rotate(-90).ToVector3XZ()));
     }
 
     void FixedUpdate()
     {
         Vector3 movement = Vector3.zero;
-        Vector3 gravity = Vector3.down * parameters.gravityStrength;
-        float velocityDelta = (accelerating ? parameters.Acceleration : -parameters.Deceleration) * Time.fixedDeltaTime;
-        velocity = Mathf.Clamp(velocity + velocityDelta, 0, parameters.MaxVelocity);
+        float velocityDelta = (accelerating ? ctrl.Acceleration : -ctrl.Deceleration) * Time.fixedDeltaTime;
+        velocity = Mathf.Clamp(velocity + velocityDelta, 0, ctrl.MaxVelocity);
         Vector3 walk = moveDir.ToVector3XZ() * velocity;
-        movement += gravity;
         movement += walk;
-        if (jumping)
-        {
-            float jumpCompletion = (Time.time - jumpHoldWindowEndTime) / parameters.JumpBaseLength;
-            Vector3 jump = JumpVelocity(jumpHoldWindowActive ? 0.0f : jumpCompletion);
-            movement += jump;
-        }
-        charCtrl.Move(movement * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + (movement * Time.fixedDeltaTime));
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Rigidbody rb = hit.collider.attachedRigidbody;
-        if (rb is null || rb.isKinematic)
-            return;
-        // Move smoothly, instead of rotating
-        rb.MovePosition(rb.transform.position + (hit.moveDirection.normalized * Time.fixedDeltaTime));
+        Rigidbody otherRb = hit.collider.attachedRigidbody;
+        if (otherRb is null || otherRb.isKinematic) return;
+        // Move smoothly, instead of rotating affected objects
+        otherRb.MovePosition(otherRb.transform.position + (hit.moveDirection.normalized * Time.fixedDeltaTime));
     }
-
-    private Vector3 JumpVelocity(float completion)
-        => moveDir.ToVector3XZ() * TweenJump(completion, parameters.JumpForwardVelocity)
-        + Vector3.up * TweenJump(completion, parameters.JumpUpwardVelocity);
-    
-    private float TweenJump(float completion, float maxValue) => maxValue * Mathf.Pow(1.0f - completion, 5.0f);
 }

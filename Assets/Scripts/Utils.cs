@@ -17,8 +17,18 @@ public static class Utils
         );
     }
 
+    public static float Angle(this Vector2 vector)
+    {
+        return Vector2.SignedAngle(Vector2.up, vector);
+    }
+
     public static float ToRadians(this float degrees)
     {
         return degrees * (Mathf.PI / 180.0f);
+    }
+
+    public static Vector2 ToVector2(this float degrees)
+    {
+        return new Vector2(Mathf.Sin(degrees.ToRadians()), Mathf.Cos(degrees.ToRadians()));
     }
 }
