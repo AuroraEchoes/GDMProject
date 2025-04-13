@@ -19,7 +19,6 @@ public class MovementController : MonoBehaviour
             character.SetController(this);
     }
 
-
     void Update()
     {
         Vector2 inputMovement = Vector2.zero;
