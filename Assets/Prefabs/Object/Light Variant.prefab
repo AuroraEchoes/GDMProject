@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1713615852838228, guid: b05ba32991cb2d34a934c6424aa79755, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 4533583357203602, guid: b05ba32991cb2d34a934c6424aa79755, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -171,3 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58001d8078dff34bbd65c2172751787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightSpread: 0

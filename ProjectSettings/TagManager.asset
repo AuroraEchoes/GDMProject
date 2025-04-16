@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Shadow
+  - Light
   layers:
   - Default
   - TransparentFX

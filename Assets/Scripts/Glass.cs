@@ -10,7 +10,7 @@ public class Glass : MonoBehaviour
         GameObject[] shadows = GameObject.FindGameObjectsWithTag("Shadow");
         foreach (GameObject shadow in shadows)
         {
-            Collider shadowCollider = shadow.GetComponent<CharacterController>();
+            Collider shadowCollider = shadow.GetComponentInChildren<Collider>();
             Physics.IgnoreCollision(thisCollider, shadowCollider);
         }
     }
