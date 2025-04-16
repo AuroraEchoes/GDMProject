@@ -14,7 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0aa8ab64e4e9a9349adb99e6c5b41ea2, type: 2}
     - target: {fileID: 2044498024793941020, guid: c656103083867184b884b2f2a69d882a, type: 3}
       propertyPath: m_Name
-      value: LightCat Variant
+      value: LightCat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044498024793941020, guid: c656103083867184b884b2f2a69d882a, type: 3}
+      propertyPath: m_TagString
+      value: Light
       objectReference: {fileID: 0}
     - target: {fileID: 8498808067632911021, guid: c656103083867184b884b2f2a69d882a, type: 3}
       propertyPath: m_LocalPosition.x
