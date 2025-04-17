@@ -1,18 +1,19 @@
-using System.Runtime.InteropServices.WindowsRuntime;
+using System;
 using UnityEngine;
 
 public class ControllableCharacter : MonoBehaviour
 {
+    private CharacterController charCtrl;
+    private Rigidbody childRb;
     private MovementController ctrl;
-    private Rigidbody rb;
     private Vector2 moveDir;
     private Vector2 nonZeroMoveDir;
     private Vector2 prevNonZeroMoveDir;
+    private Vector3 moveForce;
     private bool accelerating;
     private float velocity;
     private float rotationCompletion = 0.0f;
     private float rotationTime => 1.0f / ctrl.MovementParams.RotationSpeed;
-    private float gravityDisabledTime;
 
     public void SetInputAxes(Vector2 input)
     {
@@ -33,31 +34,26 @@ public class ControllableCharacter : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    void Update()
-    {
-        
+        charCtrl = GetComponent<CharacterController>();
+        childRb = GetComponentInChildren<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        // Position
         Vector3 movement = Vector3.zero;
+        Vector3 gravity = Vector3.down * 6.0f;
         float velocityDelta = (accelerating ? ctrl.Acceleration : -ctrl.Deceleration) * Time.fixedDeltaTime;
         velocity = Mathf.Clamp(velocity + velocityDelta, 0, ctrl.MaxVelocity);
         Vector3 walk = moveDir.ToVector3XZ() * velocity;
+        movement += gravity;
         movement += walk;
-        Vector3 climbWall = ClimbWall(movement);
-        if (climbWall.Equals(Vector3.zero))
-            rb.MovePosition(transform.position + (movement * Time.fixedDeltaTime));
-        else
-            rb.position += climbWall;
-
-        // Prevent sliding around
-        if (velocity.Equals(0f) && !rb.linearVelocity.Equals(Vector3.zero))
-            rb.linearVelocity = Vector3.zero;
+        Vector3 movementTimeScaled = movement * Time.fixedDeltaTime;
+        RaycastHit hit;
+        Vector3 avoidCollisions = childRb.SweepTest(movement.normalized, out hit, movementTimeScaled.magnitude)
+            ? movementTimeScaled.normalized * (hit.distance + 0.01f)
+            : movementTimeScaled;
+        charCtrl.Move(avoidCollisions);
+        moveForce = new Vector3(movementTimeScaled.x, 0.0f, movementTimeScaled.z);
 
         // Rotation
         Vector2 rotationVec = nonZeroMoveDir;
@@ -70,28 +66,25 @@ public class ControllableCharacter : MonoBehaviour
             rotationVec = prevNonZeroMoveDir.Rotate(thisRotation);
         }
         if (!rotationVec.Equals(Vector2.zero))
-            rb.MoveRotation(Quaternion.LookRotation(rotationVec.Rotate(-90).ToVector3XZ()));
+            transform.rotation = Quaternion.LookRotation(rotationVec.Rotate(-90).ToVector3XZ());
     }
 
-    private Vector3 ClimbWall(Vector3 movement)
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Vector3 moveDir = nonZeroMoveDir.ToVector3XZ();
-        Vector3 wallRayStartPos = transform.position + Vector3.up * 0.2f;
-        RaycastHit wallRangefinder;
-        bool rangefinderHit = Physics.Raycast(wallRayStartPos, moveDir, out wallRangefinder, 1.0f);
-        if (!rangefinderHit) return Vector3.zero;
-        if (wallRangefinder.rigidbody is null || !wallRangefinder.rigidbody.isKinematic) return Vector3.zero;
-        // Debug.Log($"Rangefinder: {wallRangefinder.distance} Target: {wallRangefinder.collider.gameObject.name} Position: {wallRangefinder.transform.position}");
-        float minClearDist = Mathf.Tan(ctrl.MovementParams.MaxSlopeAngle.ToRadians()) * ctrl.MovementParams.MaxClimbHeight;
-        Vector3 slopeRayStartPoint = wallRangefinder.point + Vector3.up * ctrl.MovementParams.MaxClimbHeight;
-        bool climbableSlope = !Physics.Raycast(slopeRayStartPoint, moveDir, minClearDist);
+        PushBlock(hit.gameObject, hit.rigidbody);
+    }
 
-        Vector3 climbRayStartPos = wallRangefinder.point
-            + movement * Time.fixedDeltaTime 
-            + Vector3.up * ctrl.MovementParams.MaxClimbHeight;
-        RaycastHit climbRay;
-        bool climbRayHit = Physics.Raycast(climbRayStartPos, Vector3.down, out climbRay, ctrl.MovementParams.MaxClimbHeight);
-        if (!climbRayHit) return Vector3.zero;
-        return climbRay.point - wallRangefinder.point;
+    public void PushBlock(GameObject obj, Rigidbody rb)
+    {
+        if (obj.CompareTag("Pushable"))
+        {
+            Vector3 blockRelativePos = (rb.position - transform.position).normalized;
+            Vector3 moveDir = nonZeroMoveDir.ToVector3XZ();
+            float angle = Vector3.Angle(moveDir, blockRelativePos);
+            if (angle < 90.0f)
+            {
+                obj.GetComponent<FixRigidbody>().Move(moveForce);
+            }
+        }
     }
 }

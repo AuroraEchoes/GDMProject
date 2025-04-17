@@ -15,6 +15,7 @@ public class CameraXAxisTracker : MonoBehaviour
     private Camera mainCamera;
     private float cameraHalfWidth;
     private Vector3 currentVelocity = Vector3.zero;
+    private bool catsMissingWarnShown = false;
 
     private void Awake()
     {
@@ -35,7 +36,11 @@ public class CameraXAxisTracker : MonoBehaviour
     {
         if (entity1 == null || entity2 == null)
         {
-            Debug.LogWarning("Cats missing");
+            if (!catsMissingWarnShown)
+            {
+                Debug.LogWarning("Cats missing");
+                catsMissingWarnShown = true;
+            }
             return;
         }
 
