@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string gameLevelTwo = "Level2";
     [SerializeField] private string gameLevelThree = "Level3";
     [SerializeField] private string gameLevelFour = "Level4";
-    [SerializeField] private string gameLevelTutorial = "Tutorial";
+    [SerializeField] private string gameLevelTutorial = "DesignInitalTest";
     [SerializeField] private string gameLevelMenu = "MainMenu";
 
 
