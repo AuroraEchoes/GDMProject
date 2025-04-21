@@ -16,6 +16,6 @@ MonoBehaviour:
   MaxVelocity: 2
   Acceleration: 10
   Deceleration: 15
-  RotationSpeed: 5
+  RotationSpeed: 3
   MaxClimbHeight: 0.2
   MaxSlopeAngle: 45

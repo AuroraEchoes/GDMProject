@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shadow
   - Light
+  - Pushable
   layers:
   - Default
   - TransparentFX
