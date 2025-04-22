@@ -122,7 +122,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8555805867053752722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81567c979317b94468f748777ec6edae, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e6c034976952cb41b38511311f20334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameLevelMenu: MainMenu
+  levelManager: {fileID: 166280929039968974, guid: 9c46b8cb864d1c046a4c2069310196ca, type: 3}
