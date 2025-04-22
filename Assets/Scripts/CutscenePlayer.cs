@@ -12,14 +12,12 @@ public class CutscenePlayer : MonoBehaviour
 
     private void Start()
     {
-        // Make sure the button is hidden initially
         if (buttonToReveal != null)
             buttonToReveal.SetActive(false);
             
         if (playOnStart)
             PlayCutscene();
             
-        // Add listener for video completion
         videoPlayer.loopPointReached += OnVideoFinished;
     }
     
@@ -27,7 +25,6 @@ public class CutscenePlayer : MonoBehaviour
     {
         if (videoPlayer != null)
         {
-            // Hide button when playing
             if (buttonToReveal != null)
                 buttonToReveal.SetActive(false);
                 
