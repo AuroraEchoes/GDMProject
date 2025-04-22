@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string gameLevelFour = "Level4";
     [SerializeField] private string gameLevelTutorial = "DesignInitalTest";
     [SerializeField] private string gameLevelMenu = "MainMenu";
+    [SerializeField] private string gameIntroCutscene = "CutScene";
 
 
     private bool trigger1Activated = false;
@@ -57,5 +58,10 @@ public class LevelManager : MonoBehaviour
     public void GameButtonMenu()
     {
         SceneManager.LoadScene(gameLevelMenu);
+    }
+    
+    public void GameButtonIntroCutScene()
+    {
+        SceneManager.LoadScene(gameIntroCutscene);
     }
 }
