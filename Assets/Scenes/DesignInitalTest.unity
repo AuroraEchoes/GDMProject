@@ -962,6 +962,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightCat
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 9054211340891109179, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104242407466521204, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3658,9 +3669,7 @@ MonoBehaviour:
   controllingCharacters:
   - {fileID: 446654459}
   - {fileID: 2137416090}
-  MovementParams: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
-  OverrideForwardDirection: 0
-  ForwardDirectionOverride: {x: 0, y: 0}
+  entityParams: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
 --- !u!4 &1902127760
 Transform:
   m_ObjectHideFlags: 0
@@ -4016,6 +4025,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShadowCat
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 7027514981566199058, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095841920014569565, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095841920014569565, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
