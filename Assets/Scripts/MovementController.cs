@@ -1,15 +1,21 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private List<ControllableCharacter> controllingCharacters = new List<ControllableCharacter>();
     [SerializeField] private ControllableEntityParams entityParams;
+    [SerializeField] private Vector2 forwardDirection = Vector2.right;
+    [SerializeField] private bool overrideForwardDirection = false;
 
     void Start()
     {
         foreach (ControllableCharacter character in controllingCharacters)
+        {
             character.Params = entityParams;
+            character.ForwardDirection = overrideForwardDirection ? forwardDirection : entityParams.ForwardDirection;
+        }
     }
 
     void Update()

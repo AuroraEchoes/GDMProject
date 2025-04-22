@@ -4726,6 +4726,8 @@ MonoBehaviour:
   - {fileID: 446654459}
   - {fileID: 2137416090}
   entityParams: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
+  forwardDirection: {x: 1, y: 0}
+  overrideForwardDirection: 0
 --- !u!4 &1902127760
 Transform:
   m_ObjectHideFlags: 0
