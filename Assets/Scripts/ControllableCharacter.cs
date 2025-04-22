@@ -7,6 +7,10 @@ public class ControllableCharacter : MonoBehaviour
     private bool accelerating = false;
     private float velocity;
     private Vector3 lastMove;
+    public Vector2 ForwardDirection;
+    [SerializeField] float stepClimbSpeed = 2f;
+    [SerializeField] GameObject stairBottom;
+    [SerializeField] GameObject stairTop;
 
     private Rigidbody rb;
 
@@ -14,7 +18,7 @@ public class ControllableCharacter : MonoBehaviour
     {
         accelerating = !input.Equals(Vector2.zero);
         if (accelerating)
-            moveDir = input.normalized;
+            moveDir = input.Rotate(ForwardDirection.Angle()).normalized;
     }
 
     void Start()
@@ -38,17 +42,28 @@ public class ControllableCharacter : MonoBehaviour
         movement += walk;
         lastMove = movement;
         rb.MovePosition(rb.position + lastMove * Time.fixedDeltaTime);
+        ClimbStairs();
     }
 
-    void OnCollisionEnter(Collision collision)
+    void ClimbStairs()
     {
-        if (collision.gameObject.CompareTag("Pushable"))
+        bool lowerHit = Physics.Raycast
+        (
+            stairBottom.transform.position,
+            transform.TransformDirection(-Params.ForwardDirection),
+            0.05f
+        );
+        if (lowerHit)
         {
-            Vector3 moveDir = lastMove.normalized;
-            Vector3 blockDir = rb.position - collision.rigidbody.position;
-            float angle = Vector3.Angle(moveDir, blockDir);
-            if (angle < 75.0f)
-                collision.rigidbody.MovePosition(collision.rigidbody.position + lastMove * (Time.fixedDeltaTime + 0.05f));
+            bool upperMissed = !Physics.Raycast(
+                stairTop.transform.position, 
+                transform.TransformDirection(-Params.ForwardDirection), 
+                0.1f
+            );
+            if (upperMissed)
+            {
+                rb.MovePosition(rb.position + Vector3.up * Time.deltaTime * stepClimbSpeed);
+            }
         }
     }
 }

@@ -963,10 +963,16 @@ PrefabInstance:
       value: LightCat
       objectReference: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
     - target: {fileID: 9054211340891109179, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_UseGravity
       value: 1
+=======
+    - target: {fileID: 5919721506461095612, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
+      propertyPath: stepSmooth
+      value: 5
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 9104242407466521204, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_IsKinematic
@@ -3670,6 +3676,8 @@ MonoBehaviour:
   - {fileID: 446654459}
   - {fileID: 2137416090}
   entityParams: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
+  forwardDirection: {x: 1, y: 0}
+  overrideForwardDirection: 0
 --- !u!4 &1902127760
 Transform:
   m_ObjectHideFlags: 0
