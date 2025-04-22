@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleOnPress:
   - {fileID: 0}
+  buttonMoveSpeed: 0.1
 --- !u!65 &2288256721472851524
 BoxCollider:
   m_ObjectHideFlags: 0

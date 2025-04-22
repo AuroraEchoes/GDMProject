@@ -2597,6 +2597,10 @@ PrefabInstance:
       propertyPath: 'toggleOnPress.Array.data[0]'
       value: 
       objectReference: {fileID: 45043531}
+    - target: {fileID: 7083397281001983426, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7085218063334066402, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.90431297
