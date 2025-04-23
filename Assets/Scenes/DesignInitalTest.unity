@@ -778,6 +778,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899187856}
     m_Modifications:
+    - target: {fileID: 4509363106517933785, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6999605455630696147, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.904313
@@ -2645,6 +2649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7114538398604162768, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3535,8 +3543,8 @@ Camera:
   m_GameObject: {fileID: 1396345595}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.07088822, g: 0.14237718, b: 0.254717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3897,6 +3905,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899187856}
     m_Modifications:
+    - target: {fileID: 4509363106517933785, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6999605455630696147, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6656871
@@ -4419,6 +4431,10 @@ PrefabInstance:
     - target: {fileID: 7086807137069155388, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
       propertyPath: m_Name
       value: Button Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114538398604162768, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

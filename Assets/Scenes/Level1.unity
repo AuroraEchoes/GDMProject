@@ -2619,6 +2619,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4509363106517933785, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6999605455630696147, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.31
@@ -3069,6 +3073,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4509363106517933785, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6999605455630696147, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.08
@@ -4031,6 +4039,10 @@ PrefabInstance:
     - target: {fileID: 4298792757633156018, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399405559062023231, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5910466309238322435, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_Name
@@ -6529,6 +6541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 0
   moveDistance: 3
+  xMoveDistance: 0
+  zMoveDistance: 0
   moveSpeed: 3
 --- !u!1 &1550099566
 GameObject:
@@ -6849,6 +6863,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4509363106517933785, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6999605455630696147, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.89
@@ -8071,6 +8089,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 0
   moveDistance: 3
+  xMoveDistance: 0
+  zMoveDistance: 0
   moveSpeed: 3
 --- !u!1001 &1850082740
 PrefabInstance:
@@ -8302,6 +8322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 0
   moveDistance: 3
+  xMoveDistance: 0
+  zMoveDistance: 0
   moveSpeed: 3
 --- !u!1 &1902127758
 GameObject:
