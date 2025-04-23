@@ -3,6 +3,8 @@ using UnityEngine;
 public class MovingDoor : ToggleableEntity
 {
     [SerializeField] private float moveDistance = 5f;
+    [SerializeField] private float xMoveDistance = 0.0f;
+    [SerializeField] private float zMoveDistance = 0.0f;
     [SerializeField] private float moveSpeed = 2f;
 
     private Vector3 originalPosition;
@@ -18,7 +20,9 @@ public class MovingDoor : ToggleableEntity
     public override void Toggle()
     {
         isRaised = !isRaised;
-        targetPosition = isRaised ? originalPosition + Vector3.up * moveDistance : originalPosition;
+        targetPosition = isRaised 
+            ? originalPosition + new Vector3(xMoveDistance, moveDistance, zMoveDistance)
+            : originalPosition;
     }
 
     private void Update()

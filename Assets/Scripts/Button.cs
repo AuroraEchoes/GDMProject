@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Button : MonoBehaviour
@@ -23,8 +22,11 @@ public class Button : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        TriggerCollide(other);
-        targetHeight = -0.02f;
+        if (other.CompareTag("Light") || other.CompareTag("Shadow") || other.CompareTag("Pushable"))
+        {
+            TriggerCollide(other);
+            targetHeight = -0.02f;
+        }
     }
 
     void OnTriggerExit(Collider other)

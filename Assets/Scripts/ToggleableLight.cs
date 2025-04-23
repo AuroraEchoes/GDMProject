@@ -13,11 +13,18 @@ public class ToggleableLight : ToggleableEntity
     public override void Toggle()
     {
         toggleableLight.enabled = !toggleableLight.enabled;
-        shadowCat = GameObject.FindWithTag("Shadow").GetComponent<ShadowCat>();
+        if (!toggleableLight.enabled && isEffectingCat)
+            shadowCat.Materialise();
     }
 
     void Start()
     {
+        if (shadowCat is null)
+        {
+            foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Shadow"))
+            shadowCat ??= obj.GetComponent<ShadowCat>();
+        }
+ 
         toggleableLight = GetComponent<Light>();
         toggleableLight.enabled = defaultState;
     }
@@ -29,6 +36,10 @@ public class ToggleableLight : ToggleableEntity
 
     private void RaycastToCat()
     {
+        if (!toggleableLight.enabled)
+        {
+            return;
+        }
         if (shadowCat == null)
         {
             if (!shadowCatNotFoundDisplayed)
@@ -39,9 +50,6 @@ public class ToggleableLight : ToggleableEntity
             return;
         }
         Vector3 lightToCat = (shadowCat.transform.position - transform.position).normalized;
-        // RaycastHit castToShadow;
-        // bool hitShadow = Physics.Raycast(transform.position, lightToCat, out castToShadow, 20.0f);
-        // if (!hitShadow) return;
         Vector3 facingDirection = transform.rotation * Vector3.up;
         float angle = Vector3.Angle(facingDirection, lightToCat);
         if (angle <= lightSpreadAngle && !isEffectingCat)

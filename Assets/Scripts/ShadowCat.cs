@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class ShadowCat : MonoBehaviour
@@ -7,11 +8,13 @@ public class ShadowCat : MonoBehaviour
     private float fadeCompletion;
     private bool fading;
     private bool materialising;
+    private float lastFadeRepeatTime;
 
     public void Fade()
     {
         fading = true;
         fadeCompletion = 0.0f;
+        lastFadeRepeatTime = Time.time;
     }
 
     public void Materialise()
@@ -27,6 +30,10 @@ public class ShadowCat : MonoBehaviour
 
     void Update()
     {
+        if (Mathf.Approximately(rend.material.color.a, 0.0f) && !fading)
+        {
+            Materialise();
+        }
         if (fading || materialising)        
         {
             fadeCompletion += Time.deltaTime / fadeTime;
