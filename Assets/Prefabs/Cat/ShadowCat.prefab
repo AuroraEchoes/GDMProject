@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Shadow
       objectReference: {fileID: 0}
+    - target: {fileID: 7538213845694666291, guid: c656103083867184b884b2f2a69d882a, type: 3}
+      propertyPath: m_TagString
+      value: Shadow
+      objectReference: {fileID: 0}
     - target: {fileID: 8498808067632911021, guid: c656103083867184b884b2f2a69d882a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

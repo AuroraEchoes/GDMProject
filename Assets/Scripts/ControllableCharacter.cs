@@ -9,8 +9,8 @@ public class ControllableCharacter : MonoBehaviour
     private Vector3 lastMove;
     public Vector2 ForwardDirection;
     [SerializeField] float stepClimbSpeed = 2f;
-    [SerializeField] GameObject stairBottom;
-    [SerializeField] GameObject stairTop;
+    [SerializeField] private GameObject stairBottom;
+    [SerializeField] private GameObject stairTop;
 
     private Rigidbody rb;
 
@@ -43,6 +43,7 @@ public class ControllableCharacter : MonoBehaviour
         lastMove = movement;
         rb.MovePosition(rb.position + lastMove * Time.fixedDeltaTime);
         ClimbStairs();
+        PushBox();
     }
 
     void ClimbStairs()
@@ -64,6 +65,24 @@ public class ControllableCharacter : MonoBehaviour
             {
                 rb.MovePosition(rb.position + Vector3.up * Time.deltaTime * stepClimbSpeed);
             }
+        }
+    }
+
+    void PushBox()
+    {
+        RaycastHit lowerRaycast;
+        bool lowerHit = Physics.Raycast
+        (
+            stairBottom.transform.position,
+            transform.TransformDirection(-Params.ForwardDirection),
+            out lowerRaycast,
+            0.05f
+        );
+        if (lowerRaycast.rigidbody is null) return;
+        bool hitBox = lowerRaycast.rigidbody.CompareTag("Pushable");
+        if (lowerHit && hitBox)
+        {
+            lowerRaycast.rigidbody.AddForce(lastMove * Time.fixedDeltaTime);
         }
     }
 }
