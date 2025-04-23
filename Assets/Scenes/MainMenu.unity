@@ -970,7 +970,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1759533691}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: GameButtonLvl1
+        m_MethodName: GameButtonLvl2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
