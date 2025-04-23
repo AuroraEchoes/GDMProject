@@ -45,6 +45,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(gameLevelOne);
     }
 
+    public void GameButtonLvl2()
+    {
+        SceneManager.LoadScene(gameLevelTwo);
+    }
+
     public void GameButtonLvl3()
     {
         SceneManager.LoadScene(gameLevelThree);
