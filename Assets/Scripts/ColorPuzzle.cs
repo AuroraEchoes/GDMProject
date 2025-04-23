@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ColorPuzzle : MonoBehaviour
 {
-    public GameObject middleDoor;
+    public MovingDoor movingDoor;
 
     private bool redCorrect, blueCorrect, yellowCorrect;
 
@@ -10,9 +10,9 @@ public class ColorPuzzle : MonoBehaviour
     {
         switch (zone)
         {
-            case "RedGate": redCorrect = isCorrect; break;
-            case "BlueGate": blueCorrect = isCorrect; break;
-            case "YellowGate": yellowCorrect = isCorrect; break;
+            case "red zone": redCorrect = isCorrect; break;
+            case "blue zone": blueCorrect = isCorrect; break;
+            case "yellow zone": yellowCorrect = isCorrect; break;
         }
 
         if (redCorrect && blueCorrect && yellowCorrect)
@@ -23,6 +23,6 @@ public class ColorPuzzle : MonoBehaviour
 
     public void OpenMiddleDoor()
     {
-        middleDoor.SetActive(false);
+        movingDoor.Toggle();
     }
 }
