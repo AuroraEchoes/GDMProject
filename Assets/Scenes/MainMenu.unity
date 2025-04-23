@@ -1527,7 +1527,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1759533691}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: GameButtonLvl3
+        m_MethodName: GameButtonLvl4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2276,6 +2276,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 166280929039968974, guid: 9c46b8cb864d1c046a4c2069310196ca, type: 3}
+      propertyPath: gameLevelFour
+      value: Level4
+      objectReference: {fileID: 0}
     - target: {fileID: 1255428670001925364, guid: 9c46b8cb864d1c046a4c2069310196ca, type: 3}
       propertyPath: m_Name
       value: LevelChanger
