@@ -325,7 +325,7 @@ PrefabInstance:
     - target: {fileID: 23266417652569830, guid: 08359538d5ddc2841a5e2aa95189861b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 40347e2344b3ed04a8165ea238a93a0b, type: 2}
+      objectReference: {fileID: 2100000, guid: e4e23eb8ec1b3c449bf23e4fafb02a1a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -861,11 +861,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1791847262}
   m_SourcePrefab: {fileID: 100100000, guid: df0de12ef64f6854ba7a94013ffbff7e, type: 3}
---- !u!1 &260561203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7001186323644475137, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
-  m_PrefabInstance: {fileID: 1506138865}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &303547692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1188,22 +1183,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2680875450257951354, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 0aa8ab64e4e9a9349adb99e6c5b41ea2, type: 2}
-    - target: {fileID: 3280794766717984725, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
-      propertyPath: m_AnimatePhysics
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5877625211094163925, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
-      propertyPath: parameters
-      value: 
-      objectReference: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
-    - target: {fileID: 8506223635615770469, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.04
-      objectReference: {fileID: 0}
     - target: {fileID: 4298792757633156018, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1271,6 +1250,22 @@ PrefabInstance:
     - target: {fileID: 5910466309238322435, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680875450257951354, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0aa8ab64e4e9a9349adb99e6c5b41ea2, type: 2}
+    - target: {fileID: 3280794766717984725, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877625211094163925, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
+      propertyPath: parameters
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
+    - target: {fileID: 8506223635615770469, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1806,7 +1801,7 @@ GameObject:
   - component: {fileID: 504757475}
   - component: {fileID: 504757474}
   m_Layer: 0
-  m_Name: red zone
+  m_Name: zone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1839,8 +1834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e509fe8d631647a8bf4b6295006b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctBox: {fileID: 1966765924}
-  ZoneName: red zone
+  zoneName: zone1
 --- !u!65 &504757475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2292,18 +2286,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2680875450257951354, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 6dd6d52456bac5d4ca806da3fa053028, type: 2}
-    - target: {fileID: 3280794766717984725, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
-      propertyPath: m_AnimatePhysics
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5877625211094163925, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
-      propertyPath: parameters
-      value: 
-      objectReference: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
     - target: {fileID: 2627316721984529620, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -2372,6 +2354,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Shadow
       objectReference: {fileID: 0}
+    - target: {fileID: 2680875450257951354, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6dd6d52456bac5d4ca806da3fa053028, type: 2}
+    - target: {fileID: 3280794766717984725, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877625211094163925, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
+      propertyPath: parameters
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3050,12 +3044,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7001186323644475137, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: m_Name
-      value: red box
+      value: push box1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001186323644475137, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
+      propertyPath: m_TagString
+      value: Pushable
       objectReference: {fileID: 0}
     - target: {fileID: 7025165257228197525, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 98bc34ddef060be4ea47e99161e9df8f, type: 2}
+      objectReference: {fileID: 2100000, guid: 41680dad0f0243748b4e228f49a2e3c4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3135,12 +3133,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7001186323644475137, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: m_Name
-      value: 'yellow box '
+      value: push box3
       objectReference: {fileID: 0}
     - target: {fileID: 7025165257228197525, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 40347e2344b3ed04a8165ea238a93a0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 41680dad0f0243748b4e228f49a2e3c4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4872,7 +4870,7 @@ PrefabInstance:
     - target: {fileID: 23266417652569830, guid: 08359538d5ddc2841a5e2aa95189861b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 673443bdcb7bf2f47be93ce60e68966f, type: 2}
+      objectReference: {fileID: 2100000, guid: e4e23eb8ec1b3c449bf23e4fafb02a1a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6017,7 +6015,7 @@ GameObject:
   - component: {fileID: 1394681069}
   - component: {fileID: 1394681070}
   m_Layer: 0
-  m_Name: 'yellow zone '
+  m_Name: zone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6071,8 +6069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e509fe8d631647a8bf4b6295006b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctBox: {fileID: 1782907329}
-  ZoneName: yellow zone
+  zoneName: 
 --- !u!1001 &1397012494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6676,12 +6673,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7001186323644475137, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: m_Name
-      value: 'blue box '
+      value: push box2
       objectReference: {fileID: 0}
     - target: {fileID: 7025165257228197525, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 673443bdcb7bf2f47be93ce60e68966f, type: 2}
+      objectReference: {fileID: 2100000, guid: 41680dad0f0243748b4e228f49a2e3c4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7376,11 +7373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightSource: {fileID: 1751598400}
   blockerCollider: {fileID: 1751598397}
---- !u!1 &1782907329 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7001186323644475137, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
-  m_PrefabInstance: {fileID: 732649018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1791847260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543033834470240, guid: df0de12ef64f6854ba7a94013ffbff7e, type: 3}
@@ -8103,7 +8095,7 @@ PrefabInstance:
     - target: {fileID: 23266417652569830, guid: 08359538d5ddc2841a5e2aa95189861b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: bf8b699dcdcd73e49a261a38c68b012b, type: 2}
+      objectReference: {fileID: 2100000, guid: e4e23eb8ec1b3c449bf23e4fafb02a1a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8599,7 +8591,7 @@ GameObject:
   - component: {fileID: 1954652137}
   - component: {fileID: 1954652136}
   m_Layer: 0
-  m_Name: 'blue zone '
+  m_Name: zone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8632,8 +8624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e509fe8d631647a8bf4b6295006b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctBox: {fileID: 260561203}
-  ZoneName: blue zone
+  zoneName: zone2
 --- !u!65 &1954652137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8655,11 +8646,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1966765924 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7001186323644475137, guid: a24e4e5d57ea90f46b05ef5c25fb5137, type: 3}
-  m_PrefabInstance: {fileID: 704630642}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1980097641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543033834470240, guid: df0de12ef64f6854ba7a94013ffbff7e, type: 3}
