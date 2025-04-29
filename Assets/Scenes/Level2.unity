@@ -1430,7 +1430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4298792757633156018, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.12
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4298792757633156018, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1438,7 +1438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4298792757633156018, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.49
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 4298792757633156018, guid: 7ff073a328925aa4a88b46dbf1934bb1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2125,7 +2125,7 @@ GameObject:
   - component: {fileID: 504757475}
   - component: {fileID: 504757474}
   m_Layer: 0
-  m_Name: red zone
+  m_Name: zone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e509fe8d631647a8bf4b6295006b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneName: 
+  zoneName: zone1
 --- !u!65 &504757475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2684,7 +2684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5609315064100917861, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5609315064100917861, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
       propertyPath: m_TagString
@@ -6503,7 +6503,7 @@ GameObject:
   - component: {fileID: 1394681069}
   - component: {fileID: 1394681070}
   m_Layer: 0
-  m_Name: 'yellow zone '
+  m_Name: zone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6557,7 +6557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e509fe8d631647a8bf4b6295006b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneName: 
+  zoneName: zone3
 --- !u!1001 &1397012494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9426,7 +9426,7 @@ GameObject:
   - component: {fileID: 1954652137}
   - component: {fileID: 1954652136}
   m_Layer: 0
-  m_Name: 'blue zone '
+  m_Name: zone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9459,7 +9459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e509fe8d631647a8bf4b6295006b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneName: 
+  zoneName: zone2
 --- !u!65 &1954652137
 BoxCollider:
   m_ObjectHideFlags: 0
