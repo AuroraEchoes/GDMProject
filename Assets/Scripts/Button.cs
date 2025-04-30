@@ -22,10 +22,26 @@ public class Button : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Light") || other.CompareTag("Shadow") || other.CompareTag("Pushable"))
+        bool isShadow = other.CompareTag("Shadow");
+        bool pushButton = other.CompareTag("Light") || other.CompareTag("Pushable");
+        pushButton = pushButton || (isShadow && other.GetComponentInParent<ShadowCat>().Faded);
+        if (pushButton)
         {
             TriggerCollide(other);
             targetHeight = -0.02f;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Shadow"))
+        {
+            ShadowCat cat = other.GetComponentInParent<ShadowCat>();
+            if (cat is not null && cat.Faded)
+            {
+                TriggerCollide(null);
+                targetHeight = 0.0f;
+            }
         }
     }
 
