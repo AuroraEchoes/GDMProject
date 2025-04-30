@@ -7,6 +7,7 @@ public class Button : MonoBehaviour
     [SerializeField] private float buttonMoveSpeed = 1.0f;
     private GameObject buttonChild;
     private float targetHeight;
+    private bool ignoreShadowCatUntilExit;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class Button : MonoBehaviour
     {
         bool isShadow = other.CompareTag("Shadow");
         bool pushButton = other.CompareTag("Light") || other.CompareTag("Pushable");
-        pushButton = pushButton || (isShadow && other.GetComponentInParent<ShadowCat>().Faded);
+        pushButton = pushButton || (isShadow && !other.GetComponentInParent<ShadowCat>().Faded);
         if (pushButton)
         {
             TriggerCollide(other);
@@ -37,6 +38,7 @@ public class Button : MonoBehaviour
         if (other.CompareTag("Shadow"))
         {
             ShadowCat cat = other.GetComponentInParent<ShadowCat>();
+            // Unfade
             if (cat is not null && cat.Faded)
             {
                 TriggerCollide(null);

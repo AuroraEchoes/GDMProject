@@ -47,40 +47,26 @@ public class ShadowCat : MonoBehaviour
         }
     }
 
-    // void FixedUpdate()
-    // {
-    //     if (Faded && colliding)
-    //     {
-    //         Vector3 movementDirection = rb.linearVelocity.normalized;
-    //         Vector3 collisionNormal = (transform.position - otherTransform.position).normalized;
-
-    //         if (Mathf.Abs(Vector3.Dot(movementDirection, collisionNormal)) > 0.05f)
-    //         {
-    //             rb.linearVelocity = Vector3.zero;
-    //             rb.angularVelocity = Vector3.zero;
-    //             rb.constraints = RigidbodyConstraints.FreezeAll;
-    //         }
-    //         else
-    //         {
-    //             rb.constraints = RigidbodyConstraints.None;
-    //         }
-    //     }
-    // }
-
-    void OnCollisionEnter(Collision collision)
+    void FixedUpdate()
     {
-        if (collision.rigidbody is null) return;
-        if (collision.rigidbody.CompareTag("Pushable"))
+        if (Faded)
         {
-            colliding = true;
-            otherTransform = collision.transform;
+            RaycastHit hit;
+            bool didHit = rb.SweepTest
+            (
+                transform.forward,
+                out hit,
+                rb.linearVelocity.magnitude + 1.0f
+            );
+            if (didHit)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
         }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.rigidbody is null) return;
-        if (collision.rigidbody.CompareTag("Pushable"))
-            colliding = false;
     }
 }
