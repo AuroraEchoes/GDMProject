@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c222b246cdd5a7d4c9492c300d0fd19a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2595,15 +2595,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627316721984529620, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.88
+      value: -23.29
       objectReference: {fileID: 0}
     - target: {fileID: 2627316721984529620, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.16000056
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 2627316721984529620, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.013988
+      value: 13.4
       objectReference: {fileID: 0}
     - target: {fileID: 2627316721984529620, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2648,6 +2648,10 @@ PrefabInstance:
     - target: {fileID: 5609315064100917861, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
       propertyPath: m_TagString
       value: Shadow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095841920014569565, guid: 69cda71cf8386f8409c5c3c3bc63a085, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2680875450257951354, guid: 0f8e91cde71cdd74b94861955a747aa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -6844,7 +6848,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.10123711, g: 0.1171895, b: 0.23584908, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0.23529412, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -10423,6 +10427,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: caed417d0c17a134696ff2ef8b52a764, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10568,7 +10576,7 @@ Camera:
   m_GameObject: {fileID: 2145242632}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.02641511, g: 0.02641511, b: 0.02641511, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

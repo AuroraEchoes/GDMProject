@@ -2324,9 +2324,9 @@ MonoBehaviour:
   controllingCharacters:
   - {fileID: 1078112737}
   - {fileID: 330895625}
-  MovementParams: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
-  OverrideForwardDirection: 0
-  ForwardDirectionOverride: {x: 0, y: 0}
+  entityParams: {fileID: 0}
+  forwardDirection: {x: 1, y: 0}
+  overrideForwardDirection: 0
 --- !u!4 &1902127760
 Transform:
   m_ObjectHideFlags: 0
