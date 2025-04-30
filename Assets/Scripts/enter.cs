@@ -9,12 +9,12 @@ public class enter : MonoBehaviour
     {
         meshCol = GetComponent<MeshCollider>();
     }
-    public void onTrigger(Collider other )
+    public void OnTriggerExit(Collider other )
     {
-        if(other.gameObject == player)
+        if(other.gameObject== player)
         {
             meshCol.enabled = true;
-            Debug.Log("enter");
+           
         }
        
     }
