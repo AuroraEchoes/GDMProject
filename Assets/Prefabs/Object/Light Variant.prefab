@@ -175,4 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58001d8078dff34bbd65c2172751787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightSpread: 0
+  defaultState: 0
+  lightSpreadAngle: 25
+  debugShowLightRays: 0

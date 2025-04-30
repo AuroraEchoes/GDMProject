@@ -87,6 +87,7 @@ public class ToggleableLight : ToggleableEntity
         bool raycastHits = Physics.Raycast(transform.position, lightToCat, out hit, lightToCat.magnitude + 2.0f);
         if (raycastHits)
         {
+            if (hit.rigidbody is null) return;
             raycastHitsCat = hit.rigidbody.CompareTag("Shadow");
             if (!raycastHitsCat) return;
             if (angle <= lightSpreadAngle && !isEffectingCat)
