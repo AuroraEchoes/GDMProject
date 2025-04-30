@@ -8,18 +8,19 @@ public class ShadowCat : MonoBehaviour
     private float fadeCompletion;
     private bool fading;
     private bool materialising;
-    private float lastFadeRepeatTime;
+    public bool Faded => rend.material.color.a < 0.5f;
 
     public void Fade()
     {
         fading = true;
+        materialising = false;
         fadeCompletion = 0.0f;
-        lastFadeRepeatTime = Time.time;
     }
 
     public void Materialise()
     {
         materialising = true;
+        fading = false;
         fadeCompletion = 0.0f;
     }
 
@@ -30,10 +31,6 @@ public class ShadowCat : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Approximately(rend.material.color.a, 0.0f) && !fading)
-        {
-            Materialise();
-        }
         if (fading || materialising)        
         {
             fadeCompletion += Time.deltaTime / fadeTime;
