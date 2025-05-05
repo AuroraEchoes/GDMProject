@@ -12,6 +12,7 @@ public class ToggleableLight : ToggleableEntity
     private static bool shadowCatNotFoundDisplayed = false;
     bool raycastHitsCat;
     bool hitting => raycastHitsCat && toggleableLight.enabled;
+    const int layerMask = ~(1 << 8);
 
     public override void Toggle()
     {
@@ -47,7 +48,7 @@ public class ToggleableLight : ToggleableEntity
     private void DebugShowLightRays()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 100.0f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 100.0f, layerMask))
         {
             for (int i = 0; i < 36; i++)
             {
@@ -84,7 +85,7 @@ public class ToggleableLight : ToggleableEntity
         Vector3 facingDirection = transform.rotation * Vector3.up;
         float angle = Vector3.Angle(facingDirection, lightToCat.normalized);
         RaycastHit hit;
-        bool raycastHits = Physics.Raycast(transform.position, lightToCat, out hit, lightToCat.magnitude + 2.0f);
+        bool raycastHits = Physics.Raycast(transform.position, lightToCat, out hit, lightToCat.magnitude + 2.0f, layerMask);
         if (raycastHits)
         {
             if (hit.rigidbody is null) return;

@@ -68,5 +68,10 @@ public class ShadowCat : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
         }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
     }
+
 }
