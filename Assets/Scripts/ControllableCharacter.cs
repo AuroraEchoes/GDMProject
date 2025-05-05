@@ -21,6 +21,16 @@ public class ControllableCharacter : MonoBehaviour
             moveDir = input.Rotate(ForwardDirection.Angle()).normalized;
     }
 
+    public bool IsFallingIntoVoid()
+    {
+        // Two conditions here:
+        // - Raycast downwards finds nothing
+        // - Downwards velocity is high
+        bool nothingBelow = !Physics.Raycast(transform.position + new Vector3(0.0f, 0.2f, 0.0f), Vector3.down, 100.0f);
+        bool falling = rb.linearVelocity.y < -10.0f;
+        return nothingBelow && falling;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
