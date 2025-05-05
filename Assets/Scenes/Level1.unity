@@ -8162,6 +8162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745efb928b5969e48b505f66ed1c9211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   gameLevelOne: Level1
   gameLevelTwo: Level2
   gameLevelThree: Level3
@@ -8813,6 +8814,7 @@ MonoBehaviour:
   entityParams: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
   forwardDirection: {x: 1, y: 0}
   overrideForwardDirection: 0
+  levelManager: {fileID: 1805041074}
 --- !u!4 &1902127760
 Transform:
   m_ObjectHideFlags: 0
