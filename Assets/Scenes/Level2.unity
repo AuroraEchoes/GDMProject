@@ -8175,7 +8175,7 @@ Camera:
   far clip plane: 1000
   field of view: 60.000004
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 10.5
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -10402,7 +10402,7 @@ Transform:
   m_GameObject: {fileID: 1795595481}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000025331974, y: -0.000000029802322, z: 0.5000006}
+  m_LocalPosition: {x: 0.1, y: -0.2, z: 0.5}
   m_LocalScale: {x: 29.2, y: 16.425001, z: 28.448935}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -12816,6 +12816,7 @@ GameObject:
   - component: {fileID: 2145242635}
   - component: {fileID: 2145242634}
   - component: {fileID: 2145242639}
+  - component: {fileID: 2145242640}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -12934,15 +12935,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145242632}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.2913798, y: -0.2774178, z: 0.085110195, w: -0.9115336}
-  m_LocalPosition: {x: -5, y: 10.238, z: -9.658236}
+  m_LocalRotation: {x: -0.2914593, y: -0.27740973, z: 0.08513461, w: -0.9115084}
+  m_LocalPosition: {x: 9.3, y: 6.82, z: -7.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1365170631}
   - {fileID: 1795595482}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 35.34, y: 394, z: 0.457}
+  m_LocalEulerAnglesHint: {x: 35.35, y: 394, z: 0.457}
 --- !u!114 &2145242639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12961,6 +12962,28 @@ MonoBehaviour:
   smoothTime: 0.3
   minXPosition: -3.4028235e+38
   maxXPosition: 3.4028235e+38
+--- !u!114 &2145242640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145242632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c361b7aeb7208d14c84aff59b380f793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 2145242637}
+  originalY: 6.82
+  originalZ: -7.57
+  originalRotation: {x: 35.35, y: 394, z: 0.4567}
+  birdseyeY: 10
+  birdseyeZ: 8.5
+  birdseyeRotation: {x: 97, y: 0, z: 0.4567}
+  sideY: 6.82
+  sideZ: -7.57
+  sideRotation: {x: 35.35, y: 0, z: 0.4567}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
