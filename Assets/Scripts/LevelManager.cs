@@ -61,7 +61,21 @@ public class LevelManager : MonoBehaviour
     {
         if (trigger1Activated && trigger2Activated)
         {
-            SceneManager.LoadScene(gameLevelMenu);
+            switch (CurrentLevel)
+            {
+                case Level.Tutorial:
+                    SceneManager.LoadScene(gameLevelOne);
+                    break;
+                case Level.Level1:
+                    SceneManager.LoadScene(gameLevelTwo);
+                    break;
+                case Level.Level2:
+                    SceneManager.LoadScene(gameLevelThree);
+                    break;
+                case Level.Level3:
+                    SceneManager.LoadScene(gameLevelFour);
+                    break;
+            }
         }
     }
 
