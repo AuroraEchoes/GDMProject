@@ -5,15 +5,14 @@ public class HiddenTutorial : MonoBehaviour
 
     public GameObject boxPrefab;
 
-    bool triggeronce = true;
+    private bool hasTriggered = false;
 
     void OnTriggerExit(Collider other)
     {
-        if (triggeronce)
+        if (!hasTriggered)
         {
-            Debug.Log("Triggered");
+            hasTriggered = true;
             Instantiate(boxPrefab, new Vector3(-12.20428f, 5.43f, -8.23f), Quaternion.identity);
-            triggeronce = false;
         }
 
 
