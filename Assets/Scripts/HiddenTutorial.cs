@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class HiddenTutorial : MonoBehaviour
 {
+    private bool hasTriggered = false;
 
     public GameObject boxPrefab;
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Triggered");
-        Instantiate(boxPrefab, new Vector3(-12.20428f, 5.43f, -8.23f), Quaternion.identity);
+        if (!hasTriggered)
+        {
+            hasTriggered = true;
+            Instantiate(boxPrefab, new Vector3(-12.20428f, 5.43f, -8.23f), Quaternion.identity);
+        }
     }
 
 
