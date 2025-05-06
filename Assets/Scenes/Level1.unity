@@ -861,6 +861,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 64.32, y: 273.54, z: 0}
+--- !u!1 &202378526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8735340700365690834, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
+  m_PrefabInstance: {fileID: 1940323877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &206910740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1227,6 +1232,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: dd9a02aea57eba148b3b2a1404bf194f, type: 3}
+--- !u!1 &397523016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 223951599671185014, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
+  m_PrefabInstance: {fileID: 513189470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &404018089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,11 +1792,11 @@ PrefabInstance:
     - target: {fileID: 2669351751093819237, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
       propertyPath: stairTop
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 637054793}
     - target: {fileID: 2669351751093819237, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
       propertyPath: stairBottom
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 397523016}
     - target: {fileID: 2669351751093819237, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
       propertyPath: ForwardDirection.x
       value: 0
@@ -2369,6 +2379,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 64.32, y: 273.54, z: 0}
+--- !u!1 &637054793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3848567037224441905, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
+  m_PrefabInstance: {fileID: 513189470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &646750160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3452,7 +3467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6c034976952cb41b38511311f20334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLevelMenu: Level2
   levelManager: {fileID: 1805041074}
 --- !u!1001 &922671640
 PrefabInstance:
@@ -4096,6 +4110,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 1814c5a2e1817d745a0616837e37dd7b, type: 3}
+--- !u!1 &1031520357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5903843664762333971, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
+  m_PrefabInstance: {fileID: 1940323877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1033829878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4596,7 +4615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a586436bd628564eabb93a8d57789ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLevelMenu: Level2
   levelManager: {fileID: 1805041074}
 --- !u!1001 &1184119126
 PrefabInstance:
@@ -8858,11 +8876,11 @@ PrefabInstance:
     - target: {fileID: 1291633952415877007, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
       propertyPath: stairTop
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 202378526}
     - target: {fileID: 1291633952415877007, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
       propertyPath: stairBottom
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1031520357}
     - target: {fileID: 1898821022379430460, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.05

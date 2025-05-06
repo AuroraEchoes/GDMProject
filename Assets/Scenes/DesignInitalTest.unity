@@ -6570,6 +6570,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1899187856}
     m_Modifications:
     - target: {fileID: 1875541695397047308, guid: a25e8e2929a86534786afb36b931147e, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1216837405}
+    - target: {fileID: 1875541695397047308, guid: a25e8e2929a86534786afb36b931147e, type: 3}
       propertyPath: gameLevelMenu
       value: Level1
       objectReference: {fileID: 0}
@@ -6690,6 +6694,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2679761779957715456, guid: c2a6e684bf3fe964ab36101d24f33728, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1216837405}
     - target: {fileID: 2679761779957715456, guid: c2a6e684bf3fe964ab36101d24f33728, type: 3}
       propertyPath: gameLevelMenu
       value: Level1
