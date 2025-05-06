@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ControllableCharacter : MonoBehaviour
 {
@@ -44,7 +45,11 @@ public class ControllableCharacter : MonoBehaviour
     {
         // Rotate cat to look in moving direction (VERY CRUDE)
         if (!moveDir.Equals(Vector2.zero))
-            transform.rotation = Quaternion.LookRotation(moveDir.Rotate(0).ToVector3XZ());
+        {
+            float totalRotation = Vector2.SignedAngle(transform.rotation.eulerAngles.y.ToVector2(), moveDir);
+            float rotDelta = Mathf.MoveTowards(0, totalRotation, 250.0f * Time.deltaTime);
+            transform.Rotate(0.0f, -rotDelta, 0.0f);
+        }
     }
 
     void FixedUpdate()
