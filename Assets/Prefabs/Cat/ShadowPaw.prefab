@@ -192,6 +192,37 @@ Transform:
   - {fileID: 4317184120398315335}
   m_Father: {fileID: 5130075272410083572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &223951599671185014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4813101569589059842}
+  m_Layer: 0
+  m_Name: LowerStairHeight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4813101569589059842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223951599671185014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0287, z: 0.02139999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4432143746171781013}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299363559088663586
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +935,37 @@ Transform:
   - {fileID: 1207373848339454221}
   m_Father: {fileID: 5130075272410083572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3848567037224441905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8236132927605150520}
+  m_Layer: 0
+  m_Name: UpperStairHeight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8236132927605150520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848567037224441905}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0539, z: 0.02139999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4432143746171781013}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4003483859785950364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,6 +1477,8 @@ Transform:
   m_LocalScale: {x: 8.73, y: 8.73, z: 8.73}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 4813101569589059842}
+  - {fileID: 8236132927605150520}
   - {fileID: 5130075272410083572}
   - {fileID: 6653271673137125221}
   m_Father: {fileID: 0}
@@ -1456,8 +1520,8 @@ MonoBehaviour:
   Params: {fileID: 11400000, guid: 8d773e48c94ab4d4999371d57cdaba63, type: 2}
   ForwardDirection: {x: 1, y: 0}
   stepClimbSpeed: 2
-  stairBottom: {fileID: 0}
-  stairTop: {fileID: 0}
+  stairBottom: {fileID: 223951599671185014}
+  stairTop: {fileID: 3848567037224441905}
 --- !u!54 &1441538448808861972
 Rigidbody:
   m_ObjectHideFlags: 0
