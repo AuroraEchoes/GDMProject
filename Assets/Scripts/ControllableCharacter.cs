@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ControllableCharacter : MonoBehaviour
 {
     public ControllableEntityParams Params;
+    private Animator anim;
+
     private Vector2 moveDir;
     private bool accelerating = false;
     private float velocity;
@@ -21,16 +24,32 @@ public class ControllableCharacter : MonoBehaviour
             moveDir = input.Rotate(ForwardDirection.Angle()).normalized;
     }
 
+    public bool IsFallingIntoVoid()
+    {
+        // Two conditions here:
+        // - Raycast downwards finds nothing
+        // - Downwards velocity is high
+        bool nothingBelow = !Physics.Raycast(transform.position + new Vector3(0.0f, 0.2f, 0.0f), Vector3.down, 100.0f);
+        bool falling = rb.linearVelocity.y < -10.0f;
+        return nothingBelow && falling;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = gameObject.GetComponentInChildren<Animator>();
+
     }
 
     void Update()
     {
         // Rotate cat to look in moving direction (VERY CRUDE)
         if (!moveDir.Equals(Vector2.zero))
-            transform.rotation = Quaternion.LookRotation(moveDir.Rotate(-90).ToVector3XZ());
+        {
+            float totalRotation = Vector2.SignedAngle(transform.rotation.eulerAngles.y.ToVector2(), moveDir);
+            float rotDelta = Mathf.MoveTowards(0, totalRotation, 250.0f * Time.deltaTime);
+            transform.Rotate(0.0f, -rotDelta, 0.0f);
+        }
     }
 
     void FixedUpdate()
@@ -41,6 +60,16 @@ public class ControllableCharacter : MonoBehaviour
         Vector3 walk = moveDir.ToVector3XZ() * velocity;
         movement += walk;
         lastMove = movement;
+    
+        if (movement.magnitude > 0.01f) 
+        {
+            anim.SetInteger("AnimationPar", 1);  // Run animation
+        }
+        else
+        {
+            anim.SetInteger("AnimationPar", 0);  // Idle animation
+        }
+    
         rb.MovePosition(rb.position + lastMove * Time.fixedDeltaTime);
         ClimbStairs();
         PushBox();

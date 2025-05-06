@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public Level CurrentLevel;
     [SerializeField] private string gameLevelOne = "Level1";
     [SerializeField] private string gameLevelTwo = "Level2";
     [SerializeField] private string gameLevelThree = "Level3";
@@ -28,17 +29,55 @@ public class LevelManager : MonoBehaviour
         CheckBothTriggers();
     }
 
-    private void CheckBothTriggers()
+    public void ReloadCurrentLevel()
     {
-        if (trigger1Activated && trigger2Activated)
+        LoadLevel(CurrentLevel);
+    }
+
+    public void LoadLevel(Level level)
+    {
+        switch (level)
         {
-            SceneManager.LoadScene(gameLevelMenu);
+            case Level.Tutorial:
+                SceneManager.LoadScene(gameLevelTutorial);
+                break;
+            case Level.Level1:
+                SceneManager.LoadScene(gameLevelOne);
+                break;
+            case Level.Level2:
+                SceneManager.LoadScene(gameLevelTwo);
+                break;
+            case Level.Level3:
+                SceneManager.LoadScene(gameLevelThree);
+                break;
+            case Level.Level4:
+                SceneManager.LoadScene(gameLevelFour);
+                break;
         }
     }
 
 
-
-
+    private void CheckBothTriggers()
+    {
+        if (trigger1Activated && trigger2Activated)
+        {
+            switch (CurrentLevel)
+            {
+                case Level.Tutorial:
+                    SceneManager.LoadScene(gameLevelOne);
+                    break;
+                case Level.Level1:
+                    SceneManager.LoadScene(gameLevelTwo);
+                    break;
+                case Level.Level2:
+                    SceneManager.LoadScene(gameLevelThree);
+                    break;
+                case Level.Level3:
+                    SceneManager.LoadScene(gameLevelFour);
+                    break;
+            }
+        }
+    }
 
     public void GameButtonLvl1()
     {
@@ -75,5 +114,14 @@ public class LevelManager : MonoBehaviour
     public void GameButtonIntroCutScene()
     {
         SceneManager.LoadScene(gameIntroCutscene);
+    }
+
+    public enum Level
+    {
+        Tutorial,
+        Level1,
+        Level2,
+        Level3,
+        Level4
     }
 }

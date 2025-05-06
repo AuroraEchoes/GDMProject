@@ -9,6 +9,9 @@ public class ShadowCat : MonoBehaviour
     private bool fading;
     private bool materialising;
     public bool Faded => rend.material.color.a < 0.5f;
+    private Rigidbody rb;
+    private bool colliding;
+    private Transform otherTransform;
 
     public void Fade()
     {
@@ -26,7 +29,8 @@ public class ShadowCat : MonoBehaviour
 
     void Start()
     {
-        rend = GetComponentInChildren<Renderer>();    
+        rend = GetComponentInChildren<Renderer>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -42,4 +46,32 @@ public class ShadowCat : MonoBehaviour
             materialising = materialising && fadeCompletion < 1.0f;
         }
     }
+
+    void FixedUpdate()
+    {
+        if (Faded)
+        {
+            RaycastHit hit;
+            bool didHit = rb.SweepTest
+            (
+                transform.forward,
+                out hit,
+                rb.linearVelocity.magnitude + 1.0f
+            );
+            if (didHit)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+    }
+
 }

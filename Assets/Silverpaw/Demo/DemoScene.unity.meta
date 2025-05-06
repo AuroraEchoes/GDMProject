@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d234c1a7c336bec4a9ccd59e1c7a2c6e
+timeCreated: 1520630945
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113362
+  packageName: Silverpaw
+  packageVersion: 1.0
+  assetPath: Assets/Silverpaw/Demo/DemoScene.unity
+  uploadId: 234200
