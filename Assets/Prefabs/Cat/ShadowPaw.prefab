@@ -841,61 +841,6 @@ Transform:
   - {fileID: 4424637196313639113}
   m_Father: {fileID: 5130075272410083572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3441372974403937822
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6774260185451689104}
-  - component: {fileID: 9161688367749667819}
-  m_Layer: 0
-  m_Name: Collider
-  m_TagString: Shadow
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6774260185451689104
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3441372974403937822}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.70710677, y: -0.7071068, z: 0.0000030139502, w: 0.0000030770893}
-  m_LocalPosition: {x: 0.0009683946, y: -0.00620001, z: 0.020068305}
-  m_LocalScale: {x: 0.22909509, y: 0.22909509, z: 0.22909509}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4432143746171781013}
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 90}
---- !u!136 &9161688367749667819
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3441372974403937822}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.07
-  m_Height: 0.59
-  m_Direction: 1
-  m_Center: {x: 0.15, y: 0, z: 0}
 --- !u!1 &3635051401722825540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,9 +1394,10 @@ GameObject:
   - component: {fileID: 5161527508486570779}
   - component: {fileID: 2669351751093819237}
   - component: {fileID: 1441538448808861972}
+  - component: {fileID: -641474535252377399}
   m_Layer: 0
   m_Name: ShadowPaw
-  m_TagString: Untagged
+  m_TagString: Shadow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1471,7 +1417,6 @@ Transform:
   m_Children:
   - {fileID: 5130075272410083572}
   - {fileID: 6653271673137125221}
-  - {fileID: 6774260185451689104}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5161527508486570779
@@ -1540,6 +1485,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &-641474535252377399
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000082727651991285}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.04101346
+  m_Height: 0.08202692
+  m_Direction: 1
+  m_Center: {x: 0.0021326651, y: 0.050000012, z: 0.029999996}
 --- !u!1 &6015859622123957849
 GameObject:
   m_ObjectHideFlags: 0
