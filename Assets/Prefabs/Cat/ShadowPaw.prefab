@@ -1457,6 +1457,7 @@ GameObject:
   - component: {fileID: 2669351751093819237}
   - component: {fileID: 1441538448808861972}
   - component: {fileID: -641474535252377399}
+  - component: {fileID: 4791363379441683191}
   m_Layer: 0
   m_Name: ShadowPaw
   m_TagString: Shadow
@@ -1572,6 +1573,19 @@ CapsuleCollider:
   m_Height: 0.08202692
   m_Direction: 1
   m_Center: {x: 0.0021326651, y: 0.050000012, z: 0.029999996}
+--- !u!114 &4791363379441683191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000082727651991285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c8e7e3056615943b762bdc2d92bb0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
 --- !u!1 &6015859622123957849
 GameObject:
   m_ObjectHideFlags: 0
