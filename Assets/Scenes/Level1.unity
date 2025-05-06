@@ -934,6 +934,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df0de12ef64f6854ba7a94013ffbff7e, type: 3}
+--- !u!1 &280451230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 223951599671185014, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
+  m_PrefabInstance: {fileID: 513189470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &281819093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4913702675648034, guid: df0de12ef64f6854ba7a94013ffbff7e, type: 3}
@@ -1782,11 +1787,11 @@ PrefabInstance:
     - target: {fileID: 2669351751093819237, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
       propertyPath: stairTop
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2093449696}
     - target: {fileID: 2669351751093819237, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
       propertyPath: stairBottom
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 280451230}
     - target: {fileID: 2669351751093819237, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
       propertyPath: ForwardDirection.x
       value: 0
@@ -3454,6 +3459,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLevelMenu: Level2
   levelManager: {fileID: 1805041074}
+--- !u!1 &921193276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8735340700365690834, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
+  m_PrefabInstance: {fileID: 1940323877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &922671640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8847,6 +8857,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4913702675648034, guid: df0de12ef64f6854ba7a94013ffbff7e, type: 3}
   m_PrefabInstance: {fileID: 1932333332}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1932525772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5903843664762333971, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
+  m_PrefabInstance: {fileID: 1940323877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1940323877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8858,11 +8873,11 @@ PrefabInstance:
     - target: {fileID: 1291633952415877007, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
       propertyPath: stairTop
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 921193276}
     - target: {fileID: 1291633952415877007, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
       propertyPath: stairBottom
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1932525772}
     - target: {fileID: 1898821022379430460, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.05
@@ -9715,6 +9730,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df0de12ef64f6854ba7a94013ffbff7e, type: 3}
+--- !u!1 &2093449696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3848567037224441905, guid: 82be6bf32ac054384ac543a3f63446dc, type: 3}
+  m_PrefabInstance: {fileID: 513189470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2098840220
 PrefabInstance:
   m_ObjectHideFlags: 0
