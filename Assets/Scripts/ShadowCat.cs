@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class ShadowCat : MonoBehaviour
 {
-    [SerializeField] private float fadeTime = 1.0f;
+    [SerializeField] private float fadeTime = 0.8f;
     private Renderer rend;
     private float fadeCompletion;
     private bool fading;
     private bool materialising;
-    public bool Faded => rend.material.color.a < 0.5f;
+    public bool Faded => rend.material.color.a < 0.8f;
     private Rigidbody rb;
     private bool colliding;
     private Transform otherTransform;

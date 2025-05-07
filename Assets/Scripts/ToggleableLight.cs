@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class ToggleableLight : ToggleableEntity
@@ -6,19 +7,30 @@ public class ToggleableLight : ToggleableEntity
 
     [SerializeField] private float lightSpreadAngle;
     [SerializeField] private bool debugShowLightRays;
+    [SerializeField] private Color lightBulbOnColor;
+    private Color lightBulbDefaultColor;
     private Light toggleableLight;
     private ShadowCat shadowCat;
+    private Material lightBulbMat;
     private bool isEffectingCat;
     private static bool shadowCatNotFoundDisplayed = false;
-    bool raycastHitsCat;
-    bool hitting => raycastHitsCat && toggleableLight.enabled;
+    private bool raycastHitsCat;
+    private bool hitting => raycastHitsCat && toggleableLight.enabled;
     const int layerMask = ~(1 << 8);
 
     public override void Toggle()
     {
         toggleableLight.enabled = !toggleableLight.enabled;
-        if (!toggleableLight.enabled && isEffectingCat)
-            shadowCat.Materialise();
+        if (toggleableLight.enabled)
+        {
+            lightBulbMat.color = lightBulbOnColor;
+        }
+        else
+        {
+            lightBulbMat.color = lightBulbDefaultColor;
+            if (isEffectingCat)
+                shadowCat.Materialise();
+        }
     }
 
     void Start()
@@ -31,6 +43,10 @@ public class ToggleableLight : ToggleableEntity
  
         toggleableLight = GetComponent<Light>();
         toggleableLight.enabled = defaultState;
+        lightBulbMat = GetComponent<MeshRenderer>().materials.First();
+        lightBulbDefaultColor = lightBulbMat.color;
+        lightBulbMat.color = toggleableLight.enabled ? lightBulbOnColor : lightBulbDefaultColor;
+
     }
 
     void Update()
