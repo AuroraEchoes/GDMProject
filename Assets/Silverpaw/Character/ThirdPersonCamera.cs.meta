@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 1be816c9557496549b098f0061387d44
+timeCreated: 1520630908
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113362
+  packageName: Silverpaw
+  packageVersion: 1.0
+  assetPath: Assets/Silverpaw/Character/ThirdPersonCamera.cs
+  uploadId: 234200

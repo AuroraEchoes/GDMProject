@@ -10,8 +10,6 @@ public class ShadowCat : MonoBehaviour
     private bool materialising;
     public bool Faded => rend.material.color.a < 0.8f;
     private Rigidbody rb;
-    private bool colliding;
-    private Transform otherTransform;
 
     public void Fade()
     {
