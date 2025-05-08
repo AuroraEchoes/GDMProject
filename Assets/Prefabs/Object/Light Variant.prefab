@@ -178,3 +178,4 @@ MonoBehaviour:
   defaultState: 0
   lightSpreadAngle: 25
   debugShowLightRays: 0
+  lightBulbOnColor: {r: 1, g: 0.9812064, b: 0, a: 0}
