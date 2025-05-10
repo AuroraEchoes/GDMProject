@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        // Restore checkpoints when level loads
+
         if (CheckpointChecker.HasCheckpoint && CheckpointChecker.HasCheckpoint)
         {
             RestoreCharactersToCheckpoints();
@@ -62,13 +62,13 @@ public class LevelManager : MonoBehaviour
 
     public void ReloadCurrentLevel()
     {
-        // Preserve checkpoints when reloading
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void LoadLevel(Level level)
     {
-        // Reset checkpoints when changing levels
+
         if (level != CurrentLevel)
         {
             CheckpointChecker.ResetCheckpoints();

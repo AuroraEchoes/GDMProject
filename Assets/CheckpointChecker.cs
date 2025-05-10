@@ -8,20 +8,23 @@ public class CheckpointChecker : MonoBehaviour
     public static bool HasCheckpoint { get; private set; }
     public static bool HasCheckpointTwo { get; private set; }
 
-    
 
+    private bool triggerLightOnce = false;
+    private bool triggerShadowOnce = false;
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Light"))
+        if (other.CompareTag("Light") && !triggerLightOnce)
         {
             LightCatCheckpoint = other.transform.position;
+            triggerLightOnce = true;
             HasCheckpoint = true;
             Debug.Log("Light checkpoint set at: " + LightCatCheckpoint);
         }
-        else if (other.CompareTag("Shadow"))
+        else if (other.CompareTag("Shadow") && !triggerShadowOnce)
         {
             ShadowCatCheckpoint = other.transform.position;
+            triggerShadowOnce = true;
             HasCheckpointTwo = true;
             Debug.Log("Shadow checkpoint set at: " + ShadowCatCheckpoint);
         }
