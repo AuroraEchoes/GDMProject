@@ -19,14 +19,14 @@ public class CheckpointChecker : MonoBehaviour
             LightCatCheckpoint = other.transform.position;
             triggerLightOnce = true;
             HasCheckpoint = true;
-            Debug.Log("Light checkpoint set at: " + LightCatCheckpoint);
+            Debug.Log("Light kitty is at " + LightCatCheckpoint);
         }
         else if (other.CompareTag("Shadow") && !triggerShadowOnce)
         {
             ShadowCatCheckpoint = other.transform.position;
             triggerShadowOnce = true;
             HasCheckpointTwo = true;
-            Debug.Log("Shadow checkpoint set at: " + ShadowCatCheckpoint);
+            Debug.Log("Shadow Kitty is at " + ShadowCatCheckpoint);
         }
     }
 
