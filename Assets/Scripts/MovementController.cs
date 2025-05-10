@@ -11,6 +11,9 @@ public class MovementController : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
     private bool levelManagerNotFoundErrorShown;
 
+    private bool checkPointTriggeredOne = false;
+    private bool checkPointTwoTriggeredOne = false;
+
     void Start()
     {
         foreach (ControllableCharacter character in controllingCharacters)
@@ -20,35 +23,45 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    void Update()
+
+    public void CheckPointOne()
     {
-        Vector2 inputMovement = Vector2.zero;
-        if (Input.GetKey(KeyCode.W))
-            inputMovement.y += 1;
-        if (Input.GetKey(KeyCode.S))
-            inputMovement.y -= 1;
-        if (Input.GetKey(KeyCode.A))
-            inputMovement.x -= 1;
-        if (Input.GetKey(KeyCode.D))
-            inputMovement.x += 1;
-        bool resetLevel = false;
-        foreach (ControllableCharacter character in controllingCharacters)
-        {
-            character.SetInputAxes(inputMovement);
-            resetLevel = resetLevel || character.IsFallingIntoVoid();
-        }
-        if (resetLevel)
-        {
-            if (levelManager is not null)
-            {
-                levelManager.ReloadCurrentLevel();
-            }
-            else if (!levelManagerNotFoundErrorShown)
-            {
-                levelManagerNotFoundErrorShown = true;
-                Debug.LogWarning("Movement Controller does not store a reference to Level Manager (and thus cannot reset levels)");
-            }
-        }
+        checkPointTriggeredOne = true;
     }
 
+    public void CheckPointTwo()
+    {
+        checkPointTwoTriggeredOne = true;
+    }
+
+
+
+    void Update()
+    {
+        // Handle input movement
+        Vector2 inputMovement = Vector2.zero;
+        if (Input.GetKey(KeyCode.W)) 
+            inputMovement.y += 1;
+        if (Input.GetKey(KeyCode.S)) 
+            inputMovement.y -= 1;
+        if (Input.GetKey(KeyCode.A)) 
+            inputMovement.x -= 1;
+        if (Input.GetKey(KeyCode.D)) 
+            inputMovement.x += 1;
+
+        // Process character movement and check for falls
+        bool anyCharacterFalling = false;
+        foreach (ControllableCharacter character in controllingCharacters)
+        {
+            if (character == null) continue;
+
+            character.SetInputAxes(inputMovement);
+            anyCharacterFalling = anyCharacterFalling || character.IsFallingIntoVoid();
+        }
+
+        if (anyCharacterFalling && levelManager != null)
+        {
+            levelManager.ReloadCurrentLevel();
+        }
+    }
 }
