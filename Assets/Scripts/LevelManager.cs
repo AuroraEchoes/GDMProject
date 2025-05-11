@@ -12,10 +12,39 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string gameLevelMenu = "MainMenu";
     [SerializeField] private string gameIntroCutscene = "CutScene";
 
-
     private bool trigger1Activated = false;
     private bool trigger2Activated = false;
 
+    private void Start()
+    {
+
+        if (CheckpointChecker.HasCheckpoint && CheckpointChecker.HasCheckpoint)
+        {
+            RestoreCharactersToCheckpoints();
+        }
+    }
+
+    private void RestoreCharactersToCheckpoints()
+    {
+        GameObject[] lightCats = GameObject.FindGameObjectsWithTag("CatLight");
+        GameObject[] shadowCats = GameObject.FindGameObjectsWithTag("Shadow");
+
+        foreach (var lightCat in lightCats)
+        {
+            if (CheckpointChecker.LightCatCheckpoint != Vector3.zero)
+            {
+                lightCat.transform.position = CheckpointChecker.LightCatCheckpoint;
+            }
+        }
+
+        foreach (var shadowCat in shadowCats)
+        {
+            if (CheckpointChecker.ShadowCatCheckpoint != Vector3.zero)
+            {
+                shadowCat.transform.position = CheckpointChecker.ShadowCatCheckpoint;
+            }
+        }
+    }
 
     public void ActivateTrigger1()
     {
@@ -31,11 +60,20 @@ public class LevelManager : MonoBehaviour
 
     public void ReloadCurrentLevel()
     {
-        LoadLevel(CurrentLevel);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void LoadLevel(Level level)
     {
+
+        if (level != CurrentLevel)
+        {
+            CheckpointChecker.ResetCheckpoints();
+        }
+
+        CurrentLevel = level;
+
         switch (level)
         {
             case Level.Tutorial:
@@ -56,7 +94,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-
     private void CheckBothTriggers()
     {
         if (trigger1Activated && trigger2Activated)
@@ -64,16 +101,16 @@ public class LevelManager : MonoBehaviour
             switch (CurrentLevel)
             {
                 case Level.Tutorial:
-                    SceneManager.LoadScene(gameLevelOne);
+                    LoadLevel(Level.Level1);
                     break;
                 case Level.Level1:
-                    SceneManager.LoadScene(gameLevelTwo);
+                    LoadLevel(Level.Level2);
                     break;
                 case Level.Level2:
-                    SceneManager.LoadScene(gameLevelThree);
+                    LoadLevel(Level.Level3);
                     break;
                 case Level.Level3:
-                    SceneManager.LoadScene(gameLevelFour);
+                    LoadLevel(Level.Level4);
                     break;
             }
         }
@@ -81,38 +118,42 @@ public class LevelManager : MonoBehaviour
 
     public void GameButtonLvl1()
     {
-        SceneManager.LoadScene(gameLevelOne);
+        CheckpointChecker.ResetCheckpoints();
+        LoadLevel(Level.Level1);
     }
 
     public void GameButtonLvl2()
     {
-        SceneManager.LoadScene(gameLevelTwo);
+        CheckpointChecker.ResetCheckpoints();
+        LoadLevel(Level.Level2);
     }
 
     public void GameButtonLvl3()
     {
-        SceneManager.LoadScene(gameLevelThree);
+        CheckpointChecker.ResetCheckpoints();
+        LoadLevel(Level.Level3);
     }
-
 
     public void GameButtonLvl4()
     {
-        SceneManager.LoadScene(gameLevelFour);
+        CheckpointChecker.ResetCheckpoints();
+        LoadLevel(Level.Level4);
     }
-
 
     public void GameButtonLvlTut()
     {
-        SceneManager.LoadScene(gameLevelTutorial);
+        LoadLevel(Level.Tutorial);
     }
 
     public void GameButtonMenu()
     {
+        CheckpointChecker.ResetCheckpoints();
         SceneManager.LoadScene(gameLevelMenu);
     }
-    
+
     public void GameButtonIntroCutScene()
     {
+        CheckpointChecker.ResetCheckpoints();
         SceneManager.LoadScene(gameIntroCutscene);
     }
 
