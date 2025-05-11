@@ -1,17 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Button : MonoBehaviour
 {
+    [SerializeField] private AudioClip buttonSound;
     [SerializeField] private List<ToggleableEntity> toggleOnPress = new List<ToggleableEntity>();
     [SerializeField] private float buttonMoveSpeed = 1.0f;
     private GameObject buttonChild;
     private float targetHeight;
     private bool ignoreShadowCatUntilExit;
+    private AudioSource audioSource;
 
     void Start()
     {
         buttonChild = transform.GetChild(0).gameObject;
+        
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     void FixedUpdate()
@@ -30,7 +39,15 @@ public class Button : MonoBehaviour
         {
             TriggerCollide(other);
             targetHeight = -0.02f;
+
+
+            if (buttonSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(buttonSound);
+            }
         }
+
+
     }
 
     void OnTriggerStay(Collider other)
