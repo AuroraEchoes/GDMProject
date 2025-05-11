@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3884395454888221815
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_Name
+      value: SM_Prop_FlagPole_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6dd6d52456bac5d4ca806da3fa053028, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7038130049820363787}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3372135211220970904}
+  m_SourcePrefab: {fileID: 100100000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+--- !u!1 &3884395454888188631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
+  m_PrefabInstance: {fileID: 3884395454888221815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7038130049820363787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884395454888188631}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.69, y: 0.31, z: -1.34}
+  m_Center: {x: -0.24900848, y: 0.17, z: -0.69}
+--- !u!114 &3372135211220970904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884395454888188631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4614ffae716504993a1671bfbc653d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

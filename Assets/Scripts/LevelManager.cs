@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
 
     private void RestoreCharactersToCheckpoints()
     {
-        GameObject[] lightCats = GameObject.FindGameObjectsWithTag("Light");
+        GameObject[] lightCats = GameObject.FindGameObjectsWithTag("CatLight");
         GameObject[] shadowCats = GameObject.FindGameObjectsWithTag("Shadow");
 
         foreach (var lightCat in lightCats)
@@ -34,7 +34,6 @@ public class LevelManager : MonoBehaviour
             if (CheckpointChecker.LightCatCheckpoint != Vector3.zero)
             {
                 lightCat.transform.position = CheckpointChecker.LightCatCheckpoint;
-                Debug.Log("Restored Light Cat to checkpoint");
             }
         }
 
@@ -43,7 +42,6 @@ public class LevelManager : MonoBehaviour
             if (CheckpointChecker.ShadowCatCheckpoint != Vector3.zero)
             {
                 shadowCat.transform.position = CheckpointChecker.ShadowCatCheckpoint;
-                Debug.Log("Restored Shadow Cat to checkpoint");
             }
         }
     }
@@ -120,21 +118,25 @@ public class LevelManager : MonoBehaviour
 
     public void GameButtonLvl1()
     {
+        CheckpointChecker.ResetCheckpoints();
         LoadLevel(Level.Level1);
     }
 
     public void GameButtonLvl2()
     {
+        CheckpointChecker.ResetCheckpoints();
         LoadLevel(Level.Level2);
     }
 
     public void GameButtonLvl3()
     {
+        CheckpointChecker.ResetCheckpoints();
         LoadLevel(Level.Level3);
     }
 
     public void GameButtonLvl4()
     {
+        CheckpointChecker.ResetCheckpoints();
         LoadLevel(Level.Level4);
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CheckpointChecker : MonoBehaviour
 {
-    // Static variables to persist across scene reloads
+
     public static Vector3 LightCatCheckpoint { get; private set; }
     public static Vector3 ShadowCatCheckpoint { get; private set; }
     public static bool HasCheckpoint { get; private set; }
@@ -12,9 +12,11 @@ public class CheckpointChecker : MonoBehaviour
     private bool triggerLightOnce = false;
     private bool triggerShadowOnce = false;
 
+
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Light") && !triggerLightOnce)
+        if (other.CompareTag("CatLight") && !triggerLightOnce)
         {
             LightCatCheckpoint = other.transform.position;
             triggerLightOnce = true;
@@ -28,7 +30,12 @@ public class CheckpointChecker : MonoBehaviour
             HasCheckpointTwo = true;
             Debug.Log("Shadow Kitty is at " + ShadowCatCheckpoint);
         }
+
     }
+
+
+
+
 
     public static void ResetCheckpoints()
     {
