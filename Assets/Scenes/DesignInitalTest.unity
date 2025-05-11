@@ -2963,6 +2963,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1899187856}
     m_Modifications:
     - target: {fileID: 376595115568994452, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
+      propertyPath: buttonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 34281412b9b15c949b18ff63261505a4, type: 3}
+    - target: {fileID: 376595115568994452, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
       propertyPath: 'toggleOnPress.Array.data[0]'
       value: 
       objectReference: {fileID: 1205124984}
@@ -3170,6 +3174,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899187856}
     m_Modifications:
+    - target: {fileID: 376595115568994452, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
+      propertyPath: buttonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 34281412b9b15c949b18ff63261505a4, type: 3}
     - target: {fileID: 376595115568994452, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
       propertyPath: toggleOnPress.Array.size
       value: 1
@@ -5526,6 +5534,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899187856}
     m_Modifications:
+    - target: {fileID: 376595115568994452, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
+      propertyPath: buttonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 34281412b9b15c949b18ff63261505a4, type: 3}
     - target: {fileID: 376595115568994452, guid: 391a2ce1b586c1b478970e2ce6537bc5, type: 3}
       propertyPath: 'toggleOnPress.Array.data[0]'
       value: 
