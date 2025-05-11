@@ -59,31 +59,26 @@ public class DialogueTyper : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
-   IEnumerator TypeLine()
+    IEnumerator TypeLine()
     {
         dialogueText.text = "";
         string line = dialogueLines[index];
+
         for (int i = 0; i < line.Length; i++)
         {
             dialogueText.text += line[i];
             yield return new WaitForSeconds(typingSpeed);
         }
+
+        
+        if (index >= dialogueLines.Length - 1)
+        {
+            yield return new WaitForSeconds(2f); 
+            yield return StartCoroutine(FadeOut());
+        }
     }
 
-   public void NextLine()
-    {
-       if (index < dialogueLines.Length - 1)
-        {
-           index++;
-            StopAllCoroutines();
-            StartCoroutine(TypeLine());
-        }
-        else
-        {
-            StopAllCoroutines();
-            StartCoroutine(FadeOut());
-        }
-    }
+    
 }
 
 

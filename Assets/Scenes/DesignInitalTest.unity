@@ -4228,7 +4228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueTyper: {fileID: 4813616}
-  dialogueIndex: 1
+  dialogueIndex: 0
 --- !u!65 &1330123366
 BoxCollider:
   m_ObjectHideFlags: 0
