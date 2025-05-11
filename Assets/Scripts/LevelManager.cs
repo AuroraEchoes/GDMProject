@@ -112,6 +112,10 @@ public class LevelManager : MonoBehaviour
                 case Level.Level3:
                     LoadLevel(Level.Level4);
                     break;
+                case Level.Level4:
+                    SceneManager.LoadScene("EndScene");
+                    break;
+                    
             }
         }
     }
