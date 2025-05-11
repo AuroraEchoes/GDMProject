@@ -9,7 +9,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!hasTriggered && other.CompareTag("Player"))
+        if (!hasTriggered && other.CompareTag("Light"))
         {
             hasTriggered = true;
             dialogueTyper.StartDialogue(dialogueIndex);
