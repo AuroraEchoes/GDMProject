@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
       propertyPath: m_Name
-      value: SM_Prop_FlagPole_01 (1)
+      value: ShadowCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: de42f45ee9765794bb30627f001550d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -105,3 +105,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4614ffae716504993a1671bfbc653d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeactivatedColor: {r: 0.1302065, g: 0.14898922, b: 0.20754719, a: 1}
+  ActivatedColor: {r: 0.12156863, g: 0.1882353, b: 0.39607844, a: 1}
