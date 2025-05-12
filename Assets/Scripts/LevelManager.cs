@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
 
     private void RestoreCharactersToCheckpoints()
     {
-        GameObject lightCat = GameObject.FindGameObjectWithTag("Light");
+        GameObject lightCat = GameObject.FindGameObjectWithTag("CatLight");
         GameObject shadowCat = GameObject.FindGameObjectWithTag("Shadow");
 
         if (CheckpointChecker.LightCatCheckpoint != Vector3.zero)

@@ -5507,7 +5507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1960289278224849784, guid: dcc1a171a00ae4c1f843ea37eebc02c7, type: 3}
       propertyPath: m_TagString
-      value: Light
+      value: CatLight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
