@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        if (CheckpointChecker.HasCheckpoint && CheckpointChecker.HasCheckpoint)
+        if (CheckpointChecker.HasCheckpoint && CheckpointChecker.HasCheckpointTwo)
         {
             RestoreCharactersToCheckpoints();
         }
