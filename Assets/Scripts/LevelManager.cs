@@ -17,7 +17,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-
         if (CheckpointChecker.HasCheckpoint && CheckpointChecker.HasCheckpoint)
         {
             RestoreCharactersToCheckpoints();
@@ -26,23 +25,17 @@ public class LevelManager : MonoBehaviour
 
     private void RestoreCharactersToCheckpoints()
     {
-        GameObject[] lightCats = GameObject.FindGameObjectsWithTag("CatLight");
-        GameObject[] shadowCats = GameObject.FindGameObjectsWithTag("Shadow");
+        GameObject lightCat = GameObject.FindGameObjectWithTag("Light");
+        GameObject shadowCat = GameObject.FindGameObjectWithTag("Shadow");
 
-        foreach (var lightCat in lightCats)
+        if (CheckpointChecker.LightCatCheckpoint != Vector3.zero)
         {
-            if (CheckpointChecker.LightCatCheckpoint != Vector3.zero)
-            {
-                lightCat.transform.position = CheckpointChecker.LightCatCheckpoint;
-            }
+            lightCat.transform.position = CheckpointChecker.LightCatCheckpoint;
         }
 
-        foreach (var shadowCat in shadowCats)
+        if (CheckpointChecker.ShadowCatCheckpoint != Vector3.zero)
         {
-            if (CheckpointChecker.ShadowCatCheckpoint != Vector3.zero)
-            {
-                shadowCat.transform.position = CheckpointChecker.ShadowCatCheckpoint;
-            }
+            shadowCat.transform.position = CheckpointChecker.ShadowCatCheckpoint;
         }
     }
 
@@ -60,7 +53,6 @@ public class LevelManager : MonoBehaviour
 
     public void ReloadCurrentLevel()
     {
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
