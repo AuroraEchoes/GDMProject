@@ -6743,6 +6743,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899187856}
     m_Modifications:
+    - target: {fileID: 2945780254515063274, guid: fa6edf2042b45ac448cbae63a43cbac2, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1216837405}
     - target: {fileID: 8554290461671533900, guid: fa6edf2042b45ac448cbae63a43cbac2, type: 3}
       propertyPath: m_LocalScale.x
       value: 14.207
@@ -6816,6 +6820,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899187856}
     m_Modifications:
+    - target: {fileID: 910657874036983971, guid: 23296dd7c47c03c45a7464f5b142141d, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1216837405}
     - target: {fileID: 7513008100823526549, guid: 23296dd7c47c03c45a7464f5b142141d, type: 3}
       propertyPath: m_Name
       value: ExitButton 2
