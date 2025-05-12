@@ -9647,6 +9647,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_FlagPole_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8698450789033829687, guid: d0703bd6de2b29b42bbd6a8419bbd98b, type: 3}
+      propertyPath: m_Center.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698450789033829687, guid: d0703bd6de2b29b42bbd6a8419bbd98b, type: 3}
+      propertyPath: m_Center.y
+      value: 0.26
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
