@@ -22,13 +22,12 @@ public class CheckpointChecker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if ((other.CompareTag("CatLight")||other.CompareTag("Light")) && !triggerLightOnce)
+        if ((other.CompareTag("CatLight") || other.CompareTag("Light")) && !triggerLightOnce)
         {
             LightCatCheckpoint = other.transform.position;
             triggerLightOnce = true;
             HasCheckpoint = true;
             StartCoroutine(TweenFlagColor());
-            Debug.Log("Light kitty is at " + LightCatCheckpoint);
         }
         else if (other.CompareTag("Shadow") && !triggerShadowOnce)
         {
@@ -36,7 +35,6 @@ public class CheckpointChecker : MonoBehaviour
             triggerShadowOnce = true;
             HasCheckpointTwo = true;
             StartCoroutine(TweenFlagColor());
-            Debug.Log("Shadow Kitty is at " + ShadowCatCheckpoint);
         }
     }
 

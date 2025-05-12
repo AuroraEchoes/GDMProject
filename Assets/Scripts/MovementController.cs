@@ -34,8 +34,6 @@ public class MovementController : MonoBehaviour
         checkPointTwoTriggeredOne = true;
     }
 
-
-
     void Update()
     {
         // Handle input movement
