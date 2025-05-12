@@ -16,7 +16,7 @@ public class ExitArea : MonoBehaviour
     bool CatTriggers(Rigidbody rigidbody)
     {
         return (rigidbody.CompareTag("Shadow") && catToTriggerFor.Equals(Cat.Shadow))
-            || (rigidbody.CompareTag("Light") && catToTriggerFor.Equals(Cat.Light));
+            || (rigidbody.CompareTag("CatLight") && catToTriggerFor.Equals(Cat.Light));
     }
 
     void OnCollisionEnter(Collision collision)
