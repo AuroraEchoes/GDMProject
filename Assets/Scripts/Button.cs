@@ -33,7 +33,7 @@ public class Button : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         bool isShadow = other.CompareTag("Shadow");
-        bool pushButton = other.CompareTag("Light") || other.CompareTag("Pushable");
+        bool pushButton = other.CompareTag("Light") || other.CompareTag("CatLight")||other.CompareTag("Pushable");
         pushButton = pushButton || (isShadow && !other.GetComponentInParent<ShadowCat>().Faded);
         if (pushButton)
         {
