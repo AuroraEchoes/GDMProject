@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ToggleableLight : ToggleableEntity
 {
@@ -14,7 +15,8 @@ public class ToggleableLight : ToggleableEntity
     private Material lightBulbMat;
     private bool isEffectingCat;
     private static bool shadowCatNotFoundDisplayed = false;
-    private bool raycastHitsCat;
+    public bool raycastHitsCat;
+    public bool raycastInterrupted;
     private bool hitting => raycastHitsCat && toggleableLight.enabled;
     const int layerMask = ~(1 << 8);
 
@@ -52,13 +54,12 @@ public class ToggleableLight : ToggleableEntity
     void Update()
     {
         if (debugShowLightRays) DebugShowLightRays();
-
+        RaycastToCat();
         if (!hitting && isEffectingCat)
         {
             shadowCat.Materialise();
             isEffectingCat = false;
         }
-        RaycastToCat();
     }
 
     private void DebugShowLightRays()
@@ -102,10 +103,12 @@ public class ToggleableLight : ToggleableEntity
         float angle = Vector3.Angle(facingDirection, lightToCat.normalized);
         RaycastHit hit;
         bool raycastHits = Physics.Raycast(transform.position, lightToCat, out hit, lightToCat.magnitude + 2.0f, layerMask);
+        raycastInterrupted = false;
         if (raycastHits)
         {
             if (hit.rigidbody is null) return;
             raycastHitsCat = hit.rigidbody.CompareTag("Shadow");
+            raycastInterrupted = hit.rigidbody.CompareTag("Pushable");
             if (!raycastHitsCat) return;
             if (angle <= lightSpreadAngle && !isEffectingCat)
             {
@@ -117,6 +120,11 @@ public class ToggleableLight : ToggleableEntity
                 isEffectingCat = false;
                 shadowCat.Materialise();
             }
+        }
+        else if (isEffectingCat)
+        {
+            isEffectingCat = false;
+            shadowCat.Materialise();
         }
     }
 }
