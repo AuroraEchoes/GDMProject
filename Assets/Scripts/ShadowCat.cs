@@ -40,7 +40,7 @@ public class ShadowCat : MonoBehaviour
             Color matColor = mat.color;
             matColor.a = fading ? 1.0f - fadeCompletion : fadeCompletion;
             mat.color = matColor;
-            fading = fading && fadeCompletion < 1.0f;
+            fading = fading && fadeCompletion < 0.8f;
             materialising = materialising && fadeCompletion < 1.0f;
         }
     }
