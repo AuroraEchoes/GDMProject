@@ -7742,10 +7742,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultState: 0
-  moveDistance: 3
+  moveDistance: 5
   xMoveDistance: 0
   zMoveDistance: 0
-  moveSpeed: 3
+  moveSpeed: 5
 --- !u!1001 &1850082740
 PrefabInstance:
   m_ObjectHideFlags: 0
