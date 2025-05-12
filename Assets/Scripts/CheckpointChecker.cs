@@ -22,7 +22,7 @@ public class CheckpointChecker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if ((other.CompareTag("CatLight") && !triggerLightOnce))
+        if (other.CompareTag("CatLight") && !triggerLightOnce)
         {
             LightCatCheckpoint = other.transform.position;
             triggerLightOnce = true;
