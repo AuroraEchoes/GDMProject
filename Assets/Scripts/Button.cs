@@ -46,8 +46,6 @@ public class Button : MonoBehaviour
                 audioSource.PlayOneShot(buttonSound);
             }
         }
-
-
     }
 
     void OnTriggerStay(Collider other)

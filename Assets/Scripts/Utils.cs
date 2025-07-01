@@ -31,4 +31,14 @@ public static class Utils
     {
         return new Vector2(Mathf.Sin(degrees.ToRadians()), Mathf.Cos(degrees.ToRadians()));
     }
+
+    public static bool IsFallingIntoVoid(Rigidbody rb)
+    {
+        // Two conditions here:
+        // - Raycast downwards finds nothing
+        // - Downwards velocity is high
+        bool nothingBelow = !Physics.Raycast(rb.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Vector3.down, 100.0f);
+        bool falling = rb.linearVelocity.y < -10.0f;
+        return nothingBelow && falling;
+    }
 }

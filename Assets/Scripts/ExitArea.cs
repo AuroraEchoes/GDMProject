@@ -16,13 +16,13 @@ public class ExitArea : MonoBehaviour
     bool CatTriggers(Rigidbody rigidbody)
     {
         return (rigidbody.CompareTag("Shadow") && catToTriggerFor.Equals(Cat.Shadow))
-            || (rigidbody.CompareTag("CatLight") && catToTriggerFor.Equals(Cat.Light));
+            || ((rigidbody.CompareTag("CatLight") || rigidbody.CompareTag("Light")) && catToTriggerFor.Equals(Cat.Light));
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.rigidbody is null) return;
-        if (CatTriggers(collision.rigidbody))
+        if (other.attachedRigidbody is null) return;
+        if (CatTriggers(other.attachedRigidbody))
             if (catToTriggerFor == Cat.Light)
                 levelManager.ActivateTrigger1();
             else

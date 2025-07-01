@@ -43,7 +43,7 @@ public class ToggleableLight : ToggleableEntity
             shadowCat ??= obj.GetComponent<ShadowCat>();
         }
  
-        toggleableLight = GetComponent<Light>();
+        toggleableLight = GetComponentInChildren<Light>();
         toggleableLight.enabled = defaultState;
         lightBulbMat = GetComponent<MeshRenderer>().materials.First();
         lightBulbDefaultColor = lightBulbMat.color;

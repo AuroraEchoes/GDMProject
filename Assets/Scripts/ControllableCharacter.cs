@@ -10,28 +10,24 @@ public class ControllableCharacter : MonoBehaviour
     private bool accelerating = false;
     private float velocity;
     private Vector3 lastMove;
-    public Vector2 ForwardDirection;
+    public MovementController MovementController;
     [SerializeField] float stepClimbSpeed = 2f;
     [SerializeField] private GameObject stairBottom;
     [SerializeField] private GameObject stairTop;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     public void SetInputAxes(Vector2 input)
     {
         accelerating = !input.Equals(Vector2.zero);
         if (accelerating)
-            moveDir = input.Rotate(ForwardDirection.Angle()).normalized;
-    }
-
-    public bool IsFallingIntoVoid()
-    {
-        // Two conditions here:
-        // - Raycast downwards finds nothing
-        // - Downwards velocity is high
-        bool nothingBelow = !Physics.Raycast(transform.position + new Vector3(0.0f, 0.2f, 0.0f), Vector3.down, 100.0f);
-        bool falling = rb.linearVelocity.y < -10.0f;
-        return nothingBelow && falling;
+        {
+            Vector2 baseMoveDir = input.Rotate(MovementController.ForwardDirection.Angle()).normalized;
+            if (MovementController.UseIsometricControls)
+                moveDir = ToIsometricDirection(input);
+            else
+                moveDir = baseMoveDir;
+        }
     }
 
     void Start()
@@ -47,7 +43,7 @@ public class ControllableCharacter : MonoBehaviour
         if (!moveDir.Equals(Vector2.zero))
         {
             float totalRotation = Vector2.SignedAngle(transform.rotation.eulerAngles.y.ToVector2(), moveDir);
-            float rotDelta = Mathf.MoveTowards(0, totalRotation, 250.0f * Time.deltaTime);
+            float rotDelta = Mathf.MoveTowards(0, totalRotation, 400.0f * Time.deltaTime);
             transform.Rotate(0.0f, -rotDelta, 0.0f);
         }
     }
@@ -60,8 +56,8 @@ public class ControllableCharacter : MonoBehaviour
         Vector3 walk = moveDir.ToVector3XZ() * velocity;
         movement += walk;
         lastMove = movement;
-    
-        if (movement.magnitude > 0.01f) 
+
+        if (movement.magnitude > 0.01f)
         {
             anim.SetInteger("AnimationPar", 1);  // Run animation
         }
@@ -69,7 +65,7 @@ public class ControllableCharacter : MonoBehaviour
         {
             anim.SetInteger("AnimationPar", 0);  // Idle animation
         }
-    
+
         rb.MovePosition(rb.position + lastMove * Time.fixedDeltaTime);
         ClimbStairs();
         PushBox();
@@ -86,8 +82,8 @@ public class ControllableCharacter : MonoBehaviour
         if (lowerHit)
         {
             bool upperMissed = !Physics.Raycast(
-                stairTop.transform.position, 
-                transform.TransformDirection(-Params.ForwardDirection), 
+                stairTop.transform.position,
+                transform.TransformDirection(-Params.ForwardDirection),
                 0.1f
             );
             if (upperMissed)
@@ -113,5 +109,23 @@ public class ControllableCharacter : MonoBehaviour
         {
             lowerRaycast.rigidbody.AddForce(lastMove * Time.fixedDeltaTime);
         }
+    }
+
+    private Vector2 IsometriseInputDirection(Vector2 baseDir)
+    {
+        // Vector2 ihat = new Vector2(1.0f, -1.0f);
+        // Vector2 jhat = new Vector2(0.5f, 0.5f);
+        // // Unity, why do you not have a 2x2 matrix??
+        // Vector2 result = new Vector2(baseDir.x * ihat.x + baseDir.y * ihat.y, baseDir.x * jhat.x + baseDir.y * jhat.y);
+        // return result;
+        baseDir.y *= 0.5f;
+        return baseDir;
+    }
+
+    private Vector2 ToIsometricDirection(Vector2 baseDir)
+    {
+        Matrix4x4 toIso = Matrix4x4.Rotate(Quaternion.Euler(0.0f, 45.0f, 0.0f));
+        Vector3 isoVec3 = toIso.MultiplyPoint3x4(new Vector3(baseDir.x, 0.0f, baseDir.y));
+        return new Vector2(isoVec3.x, isoVec3.z).normalized;
     }
 }
